@@ -1,0 +1,32 @@
+aid: microsoft-azure-web-pubsub
+url: https://raw.githubusercontent.com/api-evangelist/microsoft-azure-web-pubsub/refs/heads/main/apis.yml
+apis:
+  - aid: microsoft-azure-web-pubsub:rest-api
+    name: Azure Web PubSub REST API
+    tags:
+      - Real-Time
+      - WebSockets
+      - Pub-Sub
+      - Messaging
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    baseURL: https://{service}.webpubsub.azure.com/
+    humanURL: https://learn.microsoft.com/en-us/rest/api/webpubsub/
+    properties:
+      - url: https://learn.microsoft.com/en-us/rest/api/webpubsub/
+        type: Documentation
+    description: >-
+      Azure Web PubSub REST API provides management of real-time publish-subscribe messaging using WebSocket connections. It supports sending messages to connections, groups, and users, managing client permissions, and configuring event handlers for serverless real-time applications.
+common:
+  - type: Portal
+    url: https://portal.azure.com/
+  - type: Pricing
+    url: https://azure.microsoft.com/en-us/pricing/
+  - type: Terms of Service
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+  - type: Privacy Policy
+    url: https://privacy.microsoft.com/en-us/privacystatement
+  - type: Support
+    url: https://support.microsoft.com/
+maintainers:
+  - name: Kin Lane
+    email: kin@apievangelist.com
