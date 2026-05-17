@@ -76,7 +76,7 @@ apis:
         url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/socketio-overview
       - type: Reference
         url: https://learn.microsoft.com/en-us/rest/api/webpubsub/web-pub-sub?view=rest-webpubsub-2024-03-01
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/socketio-quickstart
   - name: Azure Web PubSub Private Endpoint Connections REST API
     description: REST API for managing private endpoint connections to a Web PubSub service instance. Enables secure, private connectivity from virtual networks to Web PubSub through Azure Private Link without exposing traffic to the public internet.
@@ -113,7 +113,7 @@ common:
     url: https://azure.microsoft.com/en-us/products/web-pubsub
   - type: Documentation
     url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/
-  - type: Getting Started
+  - type: GettingStarted
     url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/quickstart-serverless
   - type: Authentication
     url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/howto-generate-client-tokens
@@ -121,17 +121,17 @@ common:
     url: https://azure.microsoft.com/en-us/pricing/details/web-pubsub/
   - type: SLA
     url: https://azure.microsoft.com/en-us/support/legal/sla/web-pubsub/
-  - type: Status
+  - type: StatusPage
     url: https://status.azure.com/
   - type: Blog
     url: https://devblogs.microsoft.com/azure-sdk/
   - type: Support
     url: https://azure.microsoft.com/en-us/support/options/
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://azure.microsoft.com/en-us/support/legal/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://privacy.microsoft.com/en-us/privacystatement
-  - type: Sign Up
+  - type: SignUp
     url: https://azure.microsoft.com/en-us/free
   - type: Login
     url: https://portal.azure.com
@@ -149,13 +149,13 @@ common:
     url: https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/messaging/azwebpubsub
   - type: CLI Tools
     url: https://learn.microsoft.com/en-us/cli/azure/webpubsub
-  - type: Change Log
+  - type: ChangeLog
     url: https://azure.microsoft.com/en-us/updates/?product=web-pubsub
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/Azure
   - type: GitHub Samples
     url: https://github.com/Azure/azure-webpubsub
-  - type: Stack Overflow
+  - type: StackOverflow
     url: https://stackoverflow.com/questions/tagged/azure-webpubsub
   - type: Community
     url: https://learn.microsoft.com/en-us/answers/tags/371/azure-web-pubsub
