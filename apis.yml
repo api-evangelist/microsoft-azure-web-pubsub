@@ -8,7 +8,7 @@ tags:
   - Serverless
   - WebSockets
 created: '2026-03-13'
-modified: '2026-04-28'
+modified: '2026-05-30'
 url: https://azure.microsoft.com/en-us/services/web-pubsub/
 specificationVersion: '0.18'
 apis:
@@ -28,6 +28,28 @@ apis:
         url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/webpubsub/data-plane/WebPubSub/stable/2024-01-01/webpubsub.json
       - type: Reference
         url: https://learn.microsoft.com/en-us/rest/api/webpubsub/dataplane/web-pub-sub
+      - type: Authentication
+        url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/howto-generate-client-tokens
+  - name: Azure Web PubSub Client and Upstream Events
+    description: AsyncAPI 2.6 description of the Azure Web PubSub client WebSocket subprotocols (json.webpubsub.azure.v1 and json.reliable.webpubsub.azure.v1) and the CloudEvents 1.0 HTTP upstream contract used by the service to deliver client events (connect, connected, disconnected, message, user custom events) to a configured backend webhook.
+    image: https://azure.microsoft.com/svghandler/web-pubsub/
+    humanURL: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/reference-json-webpubsub-subprotocol
+    baseURL: wss://{instance}.webpubsub.azure.com
+    tags:
+      - AsyncAPI
+      - CloudEvents
+      - Event-Driven
+      - Pub-Sub
+      - WebSockets
+    properties:
+      - type: AsyncAPI
+        url: https://raw.githubusercontent.com/api-evangelist/microsoft-azure-web-pubsub/main/asyncapi/microsoft-azure-web-pubsub-asyncapi.yml
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/reference-json-webpubsub-subprotocol
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/reference-json-reliable-webpubsub-subprotocol
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/reference-cloud-events
       - type: Authentication
         url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/howto-generate-client-tokens
   - name: Azure Web PubSub Management REST API
