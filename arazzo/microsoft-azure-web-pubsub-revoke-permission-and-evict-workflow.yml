@@ -1,0 +1,102 @@
+arazzo: 1.0.1
+info:
+  title: Azure Web PubSub Revoke Permission and Evict Connection
+  summary: Revoke a connection's group permission, then forcibly close that connection.
+  description: >-
+    A moderation teardown pattern: when a connection should no longer be allowed
+    to act on a group, the app server first revokes its permission and then closes
+    the connection so it is fully evicted from the hub. Each step inlines its
+    request — Authorization bearer header, required api-version query, and
+    documented DELETE 204 status codes — so the flow is self-describing.
+  version: 1.0.0
+sourceDescriptions:
+- name: webPubSubApi
+  url: ../openapi/microsoft-azure-web-pubsub-openapi.yml
+  type: openapi
+workflows:
+- workflowId: revoke-permission-and-evict
+  summary: Revoke a connection's permission, then close the connection.
+  description: >-
+    Revokes a permission from a connection via revokePermission, then closes the
+    connection via closeConnection.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - hub
+    - permission
+    - connectionId
+    properties:
+      accessToken:
+        type: string
+        description: JWT bearer token for the Web PubSub data plane.
+      apiVersion:
+        type: string
+        description: Data plane REST API version.
+        default: "2024-01-01"
+      hub:
+        type: string
+        description: Target hub name.
+      permission:
+        type: string
+        description: Permission to revoke from the connection.
+      connectionId:
+        type: string
+        description: The connection id to revoke and evict.
+      reason:
+        type: string
+        description: Optional reason recorded when closing the connection.
+  steps:
+  - stepId: revokePermission
+    description: >-
+      Revoke the named permission from the connection so it can no longer act on
+      the target.
+    operationId: webPubSub_revokePermission
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: hub
+      in: path
+      value: $inputs.hub
+    - name: permission
+      in: path
+      value: $inputs.permission
+    - name: connectionId
+      in: path
+      value: $inputs.connectionId
+    - name: api-version
+      in: query
+      value: $inputs.apiVersion
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      revokeStatus: $statusCode
+  - stepId: evictConnection
+    description: >-
+      Close the connection, optionally recording a reason, to fully evict it from
+      the hub.
+    operationId: webPubSub_closeConnection
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: hub
+      in: path
+      value: $inputs.hub
+    - name: connectionId
+      in: path
+      value: $inputs.connectionId
+    - name: api-version
+      in: query
+      value: $inputs.apiVersion
+    - name: reason
+      in: query
+      value: $inputs.reason
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      closeStatus: $statusCode
+  outputs:
+    revokeStatus: $steps.revokePermission.outputs.revokeStatus
+    closeStatus: $steps.evictConnection.outputs.closeStatus

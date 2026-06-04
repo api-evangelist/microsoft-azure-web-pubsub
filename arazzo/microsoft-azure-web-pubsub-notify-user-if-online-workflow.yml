@@ -1,0 +1,107 @@
+arazzo: 1.0.1
+info:
+  title: Azure Web PubSub Notify User if Online
+  summary: Send a user a message only when they currently have at least one live connection.
+  description: >-
+    A presence-aware notification pattern: the app server checks whether a user
+    has any connected sessions before sending, so an offline user is not targeted
+    with a message that would silently drop. When the user is online a message is
+    delivered to all of their connections; when offline the flow ends. Each step
+    inlines its request — Authorization bearer header, required api-version query,
+    the message body, and documented HEAD 200/404 and send 202 status codes.
+  version: 1.0.0
+sourceDescriptions:
+- name: webPubSubApi
+  url: ../openapi/microsoft-azure-web-pubsub-openapi.yml
+  type: openapi
+workflows:
+- workflowId: notify-user-if-online
+  summary: Check whether a user is connected, then send a message only if online.
+  description: >-
+    Probes a user with userExists and branches: when the HEAD returns 200 it
+    sends via sendToUser, otherwise it ends.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - hub
+    - userId
+    - message
+    properties:
+      accessToken:
+        type: string
+        description: JWT bearer token for the Web PubSub data plane.
+      apiVersion:
+        type: string
+        description: Data plane REST API version.
+        default: "2024-01-01"
+      hub:
+        type: string
+        description: Target hub name.
+      userId:
+        type: string
+        description: The user id to check and notify.
+      message:
+        type: string
+        description: The plain-text message to deliver to the user.
+  steps:
+  - stepId: checkUser
+    description: >-
+      Probe whether the user currently has any connections. A 200 means online;
+      a 404 means no connection.
+    operationId: webPubSub_userExists
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: hub
+      in: path
+      value: $inputs.hub
+    - name: userId
+      in: path
+      value: $inputs.userId
+    - name: api-version
+      in: query
+      value: $inputs.apiVersion
+    successCriteria:
+    - condition: $statusCode == 200 || $statusCode == 404
+    outputs:
+      userStatus: $statusCode
+    onSuccess:
+    - name: userOnline
+      type: goto
+      stepId: notifyUser
+      criteria:
+      - condition: $statusCode == 200
+    - name: userOffline
+      type: end
+      criteria:
+      - condition: $statusCode == 404
+  - stepId: notifyUser
+    description: >-
+      Deliver the supplied plain-text message to every connection owned by the
+      user.
+    operationId: webPubSub_sendToUser
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: hub
+      in: path
+      value: $inputs.hub
+    - name: userId
+      in: path
+      value: $inputs.userId
+    - name: api-version
+      in: query
+      value: $inputs.apiVersion
+    requestBody:
+      contentType: text/plain
+      payload: $inputs.message
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      sendStatus: $statusCode
+  outputs:
+    userStatus: $steps.checkUser.outputs.userStatus
+    sendStatus: $steps.notifyUser.outputs.sendStatus

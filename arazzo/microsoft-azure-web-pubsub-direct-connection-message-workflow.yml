@@ -1,0 +1,106 @@
+arazzo: 1.0.1
+info:
+  title: Azure Web PubSub Direct Connection Message
+  summary: Confirm a connection exists, then send a targeted message to just that connection.
+  description: >-
+    A targeted delivery pattern: before sending to a single WebSocket connection,
+    the app server verifies the connection is still attached so it does not waste
+    a send on a dead connection. When the connection exists a message is sent
+    directly to it; when it is gone the flow ends. Each step inlines its request —
+    Authorization bearer header, required api-version query, the message body, and
+    documented HEAD 200/404 and send 202 status codes.
+  version: 1.0.0
+sourceDescriptions:
+- name: webPubSubApi
+  url: ../openapi/microsoft-azure-web-pubsub-openapi.yml
+  type: openapi
+workflows:
+- workflowId: direct-connection-message
+  summary: Verify a connection exists, then send a message directly to that connection.
+  description: >-
+    Probes a connection with connectionExists and, when present, delivers a
+    plain-text message via sendToConnection; otherwise ends.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - hub
+    - connectionId
+    - message
+    properties:
+      accessToken:
+        type: string
+        description: JWT bearer token for the Web PubSub data plane.
+      apiVersion:
+        type: string
+        description: Data plane REST API version.
+        default: "2024-01-01"
+      hub:
+        type: string
+        description: Target hub name.
+      connectionId:
+        type: string
+        description: The connection id to verify and message.
+      message:
+        type: string
+        description: The plain-text message to deliver to the connection.
+  steps:
+  - stepId: checkConnection
+    description: >-
+      Probe whether the connection is still attached. A 200 means it exists; a
+      404 means it is gone.
+    operationId: webPubSub_connectionExists
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: hub
+      in: path
+      value: $inputs.hub
+    - name: connectionId
+      in: path
+      value: $inputs.connectionId
+    - name: api-version
+      in: query
+      value: $inputs.apiVersion
+    successCriteria:
+    - condition: $statusCode == 200 || $statusCode == 404
+    outputs:
+      existsStatus: $statusCode
+    onSuccess:
+    - name: connectionPresent
+      type: goto
+      stepId: sendToConnection
+      criteria:
+      - condition: $statusCode == 200
+    - name: connectionAbsent
+      type: end
+      criteria:
+      - condition: $statusCode == 404
+  - stepId: sendToConnection
+    description: >-
+      Deliver the supplied plain-text message directly to the single connection.
+    operationId: webPubSub_sendToConnection
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: hub
+      in: path
+      value: $inputs.hub
+    - name: connectionId
+      in: path
+      value: $inputs.connectionId
+    - name: api-version
+      in: query
+      value: $inputs.apiVersion
+    requestBody:
+      contentType: text/plain
+      payload: $inputs.message
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      sendStatus: $statusCode
+  outputs:
+    existsStatus: $steps.checkConnection.outputs.existsStatus
+    sendStatus: $steps.sendToConnection.outputs.sendStatus

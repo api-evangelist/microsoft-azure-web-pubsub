@@ -1,0 +1,101 @@
+arazzo: 1.0.1
+info:
+  title: Azure Web PubSub Onboard User to Group
+  summary: Add a user to a group and welcome them with a targeted message in one flow.
+  description: >-
+    A membership onboarding pattern: a user (and all of their connections) is
+    added to a named group, and the user is then sent a personal welcome message
+    confirming they have joined. Each step inlines its request — Authorization
+    bearer header, required api-version query, the message body, and documented
+    PUT 200 and send 202 status codes — so the flow is self-describing.
+  version: 1.0.0
+sourceDescriptions:
+- name: webPubSubApi
+  url: ../openapi/microsoft-azure-web-pubsub-openapi.yml
+  type: openapi
+workflows:
+- workflowId: onboard-user-to-group
+  summary: Add a user to a group, then send the user a welcome message.
+  description: >-
+    Adds a user to a group via addUserToGroup, then delivers a plain-text welcome
+    message to that user via sendToUser.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - hub
+    - group
+    - userId
+    - message
+    properties:
+      accessToken:
+        type: string
+        description: JWT bearer token for the Web PubSub data plane.
+      apiVersion:
+        type: string
+        description: Data plane REST API version.
+        default: "2024-01-01"
+      hub:
+        type: string
+        description: Target hub name.
+      group:
+        type: string
+        description: Group name to add the user to.
+      userId:
+        type: string
+        description: The user id to add and welcome.
+      message:
+        type: string
+        description: The plain-text welcome message to deliver to the user.
+  steps:
+  - stepId: addUser
+    description: >-
+      Add the user and all of their connections to the named group.
+    operationId: webPubSub_addUserToGroup
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: hub
+      in: path
+      value: $inputs.hub
+    - name: group
+      in: path
+      value: $inputs.group
+    - name: userId
+      in: path
+      value: $inputs.userId
+    - name: api-version
+      in: query
+      value: $inputs.apiVersion
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      addStatus: $statusCode
+  - stepId: welcomeUser
+    description: >-
+      Deliver a personal welcome message to the user confirming they joined.
+    operationId: webPubSub_sendToUser
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: hub
+      in: path
+      value: $inputs.hub
+    - name: userId
+      in: path
+      value: $inputs.userId
+    - name: api-version
+      in: query
+      value: $inputs.apiVersion
+    requestBody:
+      contentType: text/plain
+      payload: $inputs.message
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      sendStatus: $statusCode
+  outputs:
+    addStatus: $steps.addUser.outputs.addStatus
+    sendStatus: $steps.welcomeUser.outputs.sendStatus

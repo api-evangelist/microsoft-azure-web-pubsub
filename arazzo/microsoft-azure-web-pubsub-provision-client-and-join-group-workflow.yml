@@ -1,0 +1,139 @@
+arazzo: 1.0.1
+info:
+  title: Azure Web PubSub Provision Client and Join Group
+  summary: Mint a client token, add the connection to a group, and announce the join to that group.
+  description: >-
+    An end-to-end client provisioning pattern: the app server mints a client
+    access token for a user, places an existing connection into a chat group, and
+    announces the new member to the whole group. This chains token issuance,
+    membership, and a group broadcast into one self-describing flow. Each step
+    inlines its request — Authorization bearer header, required api-version query,
+    request body, and documented status codes (token 200, add 200, send 202).
+  version: 1.0.0
+sourceDescriptions:
+- name: webPubSubApi
+  url: ../openapi/microsoft-azure-web-pubsub-openapi.yml
+  type: openapi
+workflows:
+- workflowId: provision-client-and-join-group
+  summary: Generate a client token, add a connection to a group, then announce the join to the group.
+  description: >-
+    Mints a token via generateClientToken, adds a connection to a group via
+    addConnectionToGroup, then broadcasts an announcement via sendToGroup.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - hub
+    - group
+    - connectionId
+    - announcement
+    properties:
+      accessToken:
+        type: string
+        description: JWT bearer token for the Web PubSub data plane.
+      apiVersion:
+        type: string
+        description: Data plane REST API version.
+        default: "2024-01-01"
+      hub:
+        type: string
+        description: Target hub name.
+      group:
+        type: string
+        description: Group name to join and announce to.
+      connectionId:
+        type: string
+        description: The connection id to add to the group.
+      userId:
+        type: string
+        description: Optional user id to embed in the generated client token.
+      minutesToExpire:
+        type: integer
+        description: Token lifetime in minutes.
+        default: 60
+      announcement:
+        type: string
+        description: The plain-text announcement broadcast to the group on join.
+  steps:
+  - stepId: generateToken
+    description: >-
+      Mint a client access token for the user that browser clients use to connect
+      to the hub.
+    operationId: webPubSub_generateClientToken
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: hub
+      in: path
+      value: $inputs.hub
+    - name: api-version
+      in: query
+      value: $inputs.apiVersion
+    - name: userId
+      in: query
+      value: $inputs.userId
+    - name: minutesToExpire
+      in: query
+      value: $inputs.minutesToExpire
+    - name: group
+      in: query
+      value: $inputs.group
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      token: $response.body#/token
+  - stepId: addConnection
+    description: >-
+      Add the connection to the named group so it begins receiving group
+      messages.
+    operationId: webPubSub_addConnectionToGroup
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: hub
+      in: path
+      value: $inputs.hub
+    - name: group
+      in: path
+      value: $inputs.group
+    - name: connectionId
+      in: path
+      value: $inputs.connectionId
+    - name: api-version
+      in: query
+      value: $inputs.apiVersion
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      addStatus: $statusCode
+  - stepId: announceJoin
+    description: >-
+      Broadcast the join announcement to every connection in the group.
+    operationId: webPubSub_sendToGroup
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: hub
+      in: path
+      value: $inputs.hub
+    - name: group
+      in: path
+      value: $inputs.group
+    - name: api-version
+      in: query
+      value: $inputs.apiVersion
+    requestBody:
+      contentType: text/plain
+      payload: $inputs.announcement
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      sendStatus: $statusCode
+  outputs:
+    token: $steps.generateToken.outputs.token
+    addStatus: $steps.addConnection.outputs.addStatus
+    sendStatus: $steps.announceJoin.outputs.sendStatus

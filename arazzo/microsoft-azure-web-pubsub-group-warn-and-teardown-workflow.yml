@@ -1,0 +1,96 @@
+arazzo: 1.0.1
+info:
+  title: Azure Web PubSub Warn Group and Tear Down
+  summary: Broadcast a final warning to a group, then close every connection in that group.
+  description: >-
+    A graceful group shutdown pattern: before tearing down a group the app server
+    broadcasts a final warning message to all members so clients can react, then
+    closes every connection in the group. This chains a group broadcast with a
+    group-wide close into one self-describing flow. Each step inlines its request —
+    Authorization bearer header, required api-version query, the message body, and
+    documented status codes (send 202, close 204).
+  version: 1.0.0
+sourceDescriptions:
+- name: webPubSubApi
+  url: ../openapi/microsoft-azure-web-pubsub-openapi.yml
+  type: openapi
+workflows:
+- workflowId: warn-group-and-teardown
+  summary: Send a final warning to a group, then close all connections in the group.
+  description: >-
+    Broadcasts a warning via sendToGroup, then closes every connection in the
+    group via closeGroupConnections.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - hub
+    - group
+    - warning
+    properties:
+      accessToken:
+        type: string
+        description: JWT bearer token for the Web PubSub data plane.
+      apiVersion:
+        type: string
+        description: Data plane REST API version.
+        default: "2024-01-01"
+      hub:
+        type: string
+        description: Target hub name.
+      group:
+        type: string
+        description: Group name to warn and tear down.
+      warning:
+        type: string
+        description: The plain-text warning broadcast before teardown.
+  steps:
+  - stepId: warnGroup
+    description: >-
+      Broadcast the final warning to every connection in the group so clients can
+      react before being closed.
+    operationId: webPubSub_sendToGroup
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: hub
+      in: path
+      value: $inputs.hub
+    - name: group
+      in: path
+      value: $inputs.group
+    - name: api-version
+      in: query
+      value: $inputs.apiVersion
+    requestBody:
+      contentType: text/plain
+      payload: $inputs.warning
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      sendStatus: $statusCode
+  - stepId: closeGroup
+    description: >-
+      Close every connection currently in the group, fully tearing it down.
+    operationId: webPubSub_closeGroupConnections
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: hub
+      in: path
+      value: $inputs.hub
+    - name: group
+      in: path
+      value: $inputs.group
+    - name: api-version
+      in: query
+      value: $inputs.apiVersion
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      closeStatus: $statusCode
+  outputs:
+    sendStatus: $steps.warnGroup.outputs.sendStatus
+    closeStatus: $steps.closeGroup.outputs.closeStatus

@@ -1,0 +1,100 @@
+arazzo: 1.0.1
+info:
+  title: Azure Web PubSub Generate Token then Broadcast
+  summary: Mint a client access token for a hub and immediately broadcast a message to every connection.
+  description: >-
+    A common bootstrap pattern for real-time apps: an app server first mints a
+    short-lived client access token that browsers use to connect to a Web PubSub
+    hub, then broadcasts a message to every connection currently attached to that
+    hub. Each step spells out its request inline — Authorization bearer header,
+    required api-version query, request body, and documented status codes — so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: webPubSubApi
+  url: ../openapi/microsoft-azure-web-pubsub-openapi.yml
+  type: openapi
+workflows:
+- workflowId: generate-token-then-broadcast
+  summary: Generate a client access token for a hub, then broadcast a message to all connections.
+  description: >-
+    Calls generateClientToken to mint a JWT for a hub and user, then sends a
+    text message to every connection in the hub via sendToAll.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - hub
+    - message
+    properties:
+      accessToken:
+        type: string
+        description: JWT bearer token signed with the service AccessKey (HS256) or an Entra ID token.
+      apiVersion:
+        type: string
+        description: Data plane REST API version.
+        default: "2024-01-01"
+      hub:
+        type: string
+        description: Target hub name.
+      userId:
+        type: string
+        description: Optional user id to embed in the generated client token.
+      minutesToExpire:
+        type: integer
+        description: Token lifetime in minutes.
+        default: 60
+      message:
+        type: string
+        description: The plain-text message to broadcast to all connections.
+  steps:
+  - stepId: generateToken
+    description: >-
+      Mint a client access token for the hub that browser clients use to connect
+      to the Web PubSub service.
+    operationId: webPubSub_generateClientToken
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: hub
+      in: path
+      value: $inputs.hub
+    - name: api-version
+      in: query
+      value: $inputs.apiVersion
+    - name: userId
+      in: query
+      value: $inputs.userId
+    - name: minutesToExpire
+      in: query
+      value: $inputs.minutesToExpire
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      token: $response.body#/token
+  - stepId: broadcast
+    description: >-
+      Broadcast the supplied plain-text message to every connection in the hub.
+    operationId: webPubSub_sendToAll
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $inputs.accessToken"
+    - name: hub
+      in: path
+      value: $inputs.hub
+    - name: api-version
+      in: query
+      value: $inputs.apiVersion
+    requestBody:
+      contentType: text/plain
+      payload: $inputs.message
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      broadcastStatus: $statusCode
+  outputs:
+    token: $steps.generateToken.outputs.token
+    broadcastStatus: $steps.broadcast.outputs.broadcastStatus
