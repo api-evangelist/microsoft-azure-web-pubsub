@@ -129,45 +129,42 @@ apis:
       - type: Reference
         url: https://learn.microsoft.com/en-us/rest/api/webpubsub/web-pub-sub-shared-private-link-resources?view=rest-webpubsub-2024-03-01
 common:
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-    - url: arazzo/microsoft-azure-web-pubsub-check-then-close-connection-workflow.yml
-      name: Azure Web PubSub Check then Close Connection
-      summary: Verify a connection exists before closing it, branching on whether it is present.
-    - url: arazzo/microsoft-azure-web-pubsub-direct-connection-message-workflow.yml
-      name: Azure Web PubSub Direct Connection Message
-      summary: Confirm a connection exists, then send a targeted message to just that connection.
-    - url: arazzo/microsoft-azure-web-pubsub-grant-permission-and-send-to-user-workflow.yml
-      name: Azure Web PubSub Grant Permission then Send to User
-      summary: Grant a connection a group permission, then deliver a message to that user.
-    - url: arazzo/microsoft-azure-web-pubsub-grant-permission-if-missing-workflow.yml
-      name: Azure Web PubSub Grant Permission if Missing
-      summary: Check whether a connection already holds a permission, granting it only when absent.
-    - url: arazzo/microsoft-azure-web-pubsub-group-broadcast-if-active-workflow.yml
-      name: Azure Web PubSub Broadcast to Group if Active
-      summary: Only broadcast to a group when it currently has connected members.
-    - url: arazzo/microsoft-azure-web-pubsub-group-warn-and-teardown-workflow.yml
-      name: Azure Web PubSub Warn Group and Tear Down
-      summary: Broadcast a final warning to a group, then close every connection in that group.
-    - url: arazzo/microsoft-azure-web-pubsub-join-group-and-send-workflow.yml
-      name: Azure Web PubSub Join Group, Send, then Leave
-      summary: Add a connection to a group, broadcast a message to that group, then remove the connection.
-    - url: arazzo/microsoft-azure-web-pubsub-notify-user-if-online-workflow.yml
-      name: Azure Web PubSub Notify User if Online
-      summary: Send a user a message only when they currently have at least one live connection.
-    - url: arazzo/microsoft-azure-web-pubsub-provision-client-and-join-group-workflow.yml
-      name: Azure Web PubSub Provision Client and Join Group
-      summary: Mint a client token, add the connection to a group, and announce the join to that group.
-    - url: arazzo/microsoft-azure-web-pubsub-revoke-permission-and-evict-workflow.yml
-      name: Azure Web PubSub Revoke Permission and Evict Connection
-      summary: Revoke a connection's group permission, then forcibly close that connection.
-    - url: arazzo/microsoft-azure-web-pubsub-token-then-broadcast-workflow.yml
-      name: Azure Web PubSub Generate Token then Broadcast
-      summary: Mint a client access token for a hub and immediately broadcast a message to every connection.
-    - url: arazzo/microsoft-azure-web-pubsub-user-onboard-to-group-workflow.yml
-      name: Azure Web PubSub Onboard User to Group
-      summary: Add a user to a group and welcome them with a targeted message in one flow.
+  - type: Arazzo
+    url: arazzo/microsoft-azure-web-pubsub-check-then-close-connection-workflow.yml
+    name: Azure Web PubSub Check then Close Connection
+  - type: Arazzo
+    url: arazzo/microsoft-azure-web-pubsub-direct-connection-message-workflow.yml
+    name: Azure Web PubSub Direct Connection Message
+  - type: Arazzo
+    url: arazzo/microsoft-azure-web-pubsub-grant-permission-and-send-to-user-workflow.yml
+    name: Azure Web PubSub Grant Permission then Send to User
+  - type: Arazzo
+    url: arazzo/microsoft-azure-web-pubsub-grant-permission-if-missing-workflow.yml
+    name: Azure Web PubSub Grant Permission if Missing
+  - type: Arazzo
+    url: arazzo/microsoft-azure-web-pubsub-group-broadcast-if-active-workflow.yml
+    name: Azure Web PubSub Broadcast to Group if Active
+  - type: Arazzo
+    url: arazzo/microsoft-azure-web-pubsub-group-warn-and-teardown-workflow.yml
+    name: Azure Web PubSub Warn Group and Tear Down
+  - type: Arazzo
+    url: arazzo/microsoft-azure-web-pubsub-join-group-and-send-workflow.yml
+    name: Azure Web PubSub Join Group, Send, then Leave
+  - type: Arazzo
+    url: arazzo/microsoft-azure-web-pubsub-notify-user-if-online-workflow.yml
+    name: Azure Web PubSub Notify User if Online
+  - type: Arazzo
+    url: arazzo/microsoft-azure-web-pubsub-provision-client-and-join-group-workflow.yml
+    name: Azure Web PubSub Provision Client and Join Group
+  - type: Arazzo
+    url: arazzo/microsoft-azure-web-pubsub-revoke-permission-and-evict-workflow.yml
+    name: Azure Web PubSub Revoke Permission and Evict Connection
+  - type: Arazzo
+    url: arazzo/microsoft-azure-web-pubsub-token-then-broadcast-workflow.yml
+    name: Azure Web PubSub Generate Token then Broadcast
+  - type: Arazzo
+    url: arazzo/microsoft-azure-web-pubsub-user-onboard-to-group-workflow.yml
+    name: Azure Web PubSub Onboard User to Group
   - type: Portal
     url: https://portal.azure.com/
   - type: Website
@@ -180,7 +177,7 @@ common:
     url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/howto-generate-client-tokens
   - type: Pricing
     url: https://azure.microsoft.com/en-us/pricing/details/web-pubsub/
-  - type: SLA
+  - type: ServiceLevelAgreement
     url: https://azure.microsoft.com/en-us/support/legal/sla/web-pubsub/
   - type: StatusPage
     url: https://status.azure.com/
@@ -192,7 +189,7 @@ common:
     url: https://azure.microsoft.com/en-us/support/legal/
   - type: PrivacyPolicy
     url: https://privacy.microsoft.com/en-us/privacystatement
-  - type: SignUp
+  - type: Signup
     url: https://azure.microsoft.com/en-us/free
   - type: Login
     url: https://portal.azure.com
@@ -222,7 +219,7 @@ common:
     url: https://learn.microsoft.com/en-us/answers/tags/371/azure-web-pubsub
   - type: FAQ
     url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/resource-faq
-  - type: Quotas
+  - type: RateLimits
     url: https://learn.microsoft.com/en-us/azure/azure-web-pubsub/concept-billing-model
 maintainers:
   - FN: Kin Lane
