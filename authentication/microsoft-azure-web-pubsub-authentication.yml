@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/microsoft-azure-web-pubsub-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearer_auth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: |-
+    JWT signed with the service AccessKey using HS256, or a Microsoft
+    Entra ID OAuth 2.0 bearer token with scope
+    https://webpubsub.azure.com/.default
+  sources:
+  - openapi/microsoft-azure-web-pubsub-openapi.yml

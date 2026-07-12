@@ -129,6 +129,10 @@ apis:
       - type: Reference
         url: https://learn.microsoft.com/en-us/rest/api/webpubsub/web-pub-sub-shared-private-link-resources?view=rest-webpubsub-2024-03-01
 common:
+  - type: DomainSecurity
+    url: security/microsoft-azure-web-pubsub-domain-security.yml
+  - type: Authentication
+    url: authentication/microsoft-azure-web-pubsub-authentication.yml
   - type: Arazzo
     url: arazzo/microsoft-azure-web-pubsub-check-then-close-connection-workflow.yml
     name: Azure Web PubSub Check then Close Connection
