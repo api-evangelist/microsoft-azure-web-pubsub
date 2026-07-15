@@ -129,6 +129,8 @@ apis:
       - type: Reference
         url: https://learn.microsoft.com/en-us/rest/api/webpubsub/web-pub-sub-shared-private-link-resources?view=rest-webpubsub-2024-03-01
 common:
+  - type: AgenticAccess
+    url: agentic-access/microsoft-azure-web-pubsub-agentic-access.yml
   - type: DomainSecurity
     url: security/microsoft-azure-web-pubsub-domain-security.yml
   - type: Authentication
