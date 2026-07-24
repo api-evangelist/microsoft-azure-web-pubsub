@@ -1,0 +1,104 @@
+openapi: 3.1.0
+info:
+  title: Azure Web PubSub Service Data Plane REST ClientToken API
+  description: 'Data plane REST API for Azure Web PubSub. Lets app servers send messages
+
+    to connected WebSocket clients (broadcast, group, user, connection),
+
+    manage connection/group/user membership, generate client tokens, and
+
+    check/grant/revoke permissions. Authentication uses a JWT bearer token
+
+    signed with the service AccessKey (HS256) or a Microsoft Entra ID token
+
+    with scope https://webpubsub.azure.com/.default.
+
+    '
+  version: '2024-01-01'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+  license:
+    name: Microsoft Terms of Use
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://{instance}.webpubsub.azure.com
+  description: Azure Web PubSub service instance
+  variables:
+    instance:
+      default: example
+      description: Web PubSub service instance name
+security:
+- bearer_auth: []
+tags:
+- name: ClientToken
+  description: Generate JWT tokens for client connections
+paths:
+  /api/hubs/{hub}/:generateToken:
+    post:
+      tags:
+      - ClientToken
+      summary: Generate a client access token
+      operationId: webPubSub_generateClientToken
+      parameters:
+      - $ref: '#/components/parameters/hub'
+      - $ref: '#/components/parameters/apiVersion'
+      - name: userId
+        in: query
+        schema:
+          type: string
+      - name: role
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: minutesToExpire
+        in: query
+        schema:
+          type: integer
+          default: 60
+      - name: group
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Token generated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+components:
+  parameters:
+    apiVersion:
+      name: api-version
+      in: query
+      required: true
+      schema:
+        type: string
+        default: '2024-01-01'
+    hub:
+      name: hub
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^[A-Za-z][A-Za-z0-9_`,.[\]]{0,127}$
+  securitySchemes:
+    bearer_auth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'JWT signed with the service AccessKey using HS256, or a Microsoft
+
+        Entra ID OAuth 2.0 bearer token with scope
+
+        https://webpubsub.azure.com/.default
+
+        '

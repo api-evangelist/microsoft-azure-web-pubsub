@@ -1,0 +1,417 @@
+openapi: 3.1.0
+info:
+  title: Azure Web PubSub Service Data Plane REST ClientToken Hub API
+  description: 'Data plane REST API for Azure Web PubSub. Lets app servers send messages
+
+    to connected WebSocket clients (broadcast, group, user, connection),
+
+    manage connection/group/user membership, generate client tokens, and
+
+    check/grant/revoke permissions. Authentication uses a JWT bearer token
+
+    signed with the service AccessKey (HS256) or a Microsoft Entra ID token
+
+    with scope https://webpubsub.azure.com/.default.
+
+    '
+  version: '2024-01-01'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+  license:
+    name: Microsoft Terms of Use
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://{instance}.webpubsub.azure.com
+  description: Azure Web PubSub service instance
+  variables:
+    instance:
+      default: example
+      description: Web PubSub service instance name
+security:
+- bearer_auth: []
+tags:
+- name: Hub
+  description: Send messages and manage connections, groups, and users in a hub
+paths:
+  /api/hubs/{hub}/:send:
+    post:
+      tags:
+      - Hub
+      summary: Broadcast a message to all connections in the hub
+      operationId: webPubSub_sendToAll
+      parameters:
+      - $ref: '#/components/parameters/hub'
+      - $ref: '#/components/parameters/apiVersion'
+      - name: excluded
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+        description: Excluded connection Ids
+      - name: filter
+        in: query
+        schema:
+          type: string
+        description: OData filter to limit recipients
+      - name: messageTtlSeconds
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+          maximum: 300
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+          text/plain:
+            schema:
+              type: string
+          application/json:
+            schema: {}
+      responses:
+        '202':
+          description: Accepted
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /api/hubs/{hub}/connections/{connectionId}/:send:
+    post:
+      tags:
+      - Hub
+      summary: Send message to a specific connection
+      operationId: webPubSub_sendToConnection
+      parameters:
+      - $ref: '#/components/parameters/hub'
+      - name: connectionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/apiVersion'
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+          text/plain:
+            schema:
+              type: string
+          application/json:
+            schema: {}
+      responses:
+        '202':
+          description: Accepted
+  /api/hubs/{hub}/groups/{group}/:send:
+    post:
+      tags:
+      - Hub
+      summary: Send message to a group of connections
+      operationId: webPubSub_sendToGroup
+      parameters:
+      - $ref: '#/components/parameters/hub'
+      - $ref: '#/components/parameters/group'
+      - $ref: '#/components/parameters/apiVersion'
+      - name: filter
+        in: query
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+          text/plain:
+            schema:
+              type: string
+          application/json:
+            schema: {}
+      responses:
+        '202':
+          description: Accepted
+  /api/hubs/{hub}/users/{userId}/:send:
+    post:
+      tags:
+      - Hub
+      summary: Send message to a specific user
+      operationId: webPubSub_sendToUser
+      parameters:
+      - $ref: '#/components/parameters/hub'
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/apiVersion'
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+          text/plain:
+            schema:
+              type: string
+          application/json:
+            schema: {}
+      responses:
+        '202':
+          description: Accepted
+  /api/hubs/{hub}/connections/{connectionId}:
+    head:
+      tags:
+      - Hub
+      summary: Check if a connection exists
+      operationId: webPubSub_connectionExists
+      parameters:
+      - $ref: '#/components/parameters/hub'
+      - name: connectionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '200':
+          description: Connection exists
+        '404':
+          description: Connection does not exist
+    delete:
+      tags:
+      - Hub
+      summary: Close a connection
+      operationId: webPubSub_closeConnection
+      parameters:
+      - $ref: '#/components/parameters/hub'
+      - name: connectionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/apiVersion'
+      - name: reason
+        in: query
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+  /api/hubs/{hub}/:closeConnections:
+    post:
+      tags:
+      - Hub
+      summary: Close all connections in the hub
+      operationId: webPubSub_closeAllConnections
+      parameters:
+      - $ref: '#/components/parameters/hub'
+      - $ref: '#/components/parameters/apiVersion'
+      - name: excluded
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: reason
+        in: query
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+  /api/hubs/{hub}/groups/{group}/:close:
+    post:
+      tags:
+      - Hub
+      summary: Close connections in a group
+      operationId: webPubSub_closeGroupConnections
+      parameters:
+      - $ref: '#/components/parameters/hub'
+      - $ref: '#/components/parameters/group'
+      - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '204':
+          description: No Content
+  /api/hubs/{hub}/users/{userId}/:close:
+    post:
+      tags:
+      - Hub
+      summary: Close connections for a user
+      operationId: webPubSub_closeUserConnections
+      parameters:
+      - $ref: '#/components/parameters/hub'
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '204':
+          description: No Content
+  /api/hubs/{hub}/groups/{group}:
+    head:
+      tags:
+      - Hub
+      summary: Check if a group has any connections
+      operationId: webPubSub_groupExists
+      parameters:
+      - $ref: '#/components/parameters/hub'
+      - $ref: '#/components/parameters/group'
+      - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '200':
+          description: Group has connections
+        '404':
+          description: Empty group
+  /api/hubs/{hub}/users/{userId}:
+    head:
+      tags:
+      - Hub
+      summary: Check if a user has any connections
+      operationId: webPubSub_userExists
+      parameters:
+      - $ref: '#/components/parameters/hub'
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '200':
+          description: User has connections
+        '404':
+          description: No connection
+  /api/hubs/{hub}/groups/{group}/connections/{connectionId}:
+    put:
+      tags:
+      - Hub
+      summary: Add a connection to a group
+      operationId: webPubSub_addConnectionToGroup
+      parameters:
+      - $ref: '#/components/parameters/hub'
+      - $ref: '#/components/parameters/group'
+      - name: connectionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '200':
+          description: OK
+    delete:
+      tags:
+      - Hub
+      summary: Remove a connection from a group
+      operationId: webPubSub_removeConnectionFromGroup
+      parameters:
+      - $ref: '#/components/parameters/hub'
+      - $ref: '#/components/parameters/group'
+      - name: connectionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '204':
+          description: No Content
+  /api/hubs/{hub}/groups/{group}/users/{userId}:
+    put:
+      tags:
+      - Hub
+      summary: Add a user to a group
+      operationId: webPubSub_addUserToGroup
+      parameters:
+      - $ref: '#/components/parameters/hub'
+      - $ref: '#/components/parameters/group'
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '200':
+          description: OK
+    delete:
+      tags:
+      - Hub
+      summary: Remove a user from a group
+      operationId: webPubSub_removeUserFromGroup
+      parameters:
+      - $ref: '#/components/parameters/hub'
+      - $ref: '#/components/parameters/group'
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/apiVersion'
+      responses:
+        '204':
+          description: No Content
+components:
+  parameters:
+    group:
+      name: group
+      in: path
+      required: true
+      schema:
+        type: string
+    hub:
+      name: hub
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^[A-Za-z][A-Za-z0-9_`,.[\]]{0,127}$
+    apiVersion:
+      name: api-version
+      in: query
+      required: true
+      schema:
+        type: string
+        default: '2024-01-01'
+  schemas:
+    ErrorDetail:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        target:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+  responses:
+    ErrorResponse:
+      description: Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorDetail'
+  securitySchemes:
+    bearer_auth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'JWT signed with the service AccessKey using HS256, or a Microsoft
+
+        Entra ID OAuth 2.0 bearer token with scope
+
+        https://webpubsub.azure.com/.default
+
+        '
