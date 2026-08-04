@@ -1,0 +1,507 @@
+{
+  "info": {
+    "_postman_id": "5cbfb7ed-e900-4653-aca5-93357b686761",
+    "name": "Azure Web PubSub Service Data Plane REST ClientToken Permission API",
+    "description": "Data plane REST API for Azure Web PubSub. Lets app servers send messages\nto connected WebSocket clients (broadcast, group, user, connection),\nmanage connection/group/user membership, generate client tokens, and\ncheck/grant/revoke permissions. Authentication uses a JWT bearer token\nsigned with the service AccessKey (HS256) or a Microsoft Entra ID token\nwith scope https://webpubsub.azure.com/.default.\n\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:10:44.000Z",
+    "updatedAt": "2026-07-28T02:10:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5cbfb7ed-e900-4653-aca5-93357b686761"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "hubs",
+          "item": [
+            {
+              "name": "{hub}",
+              "item": [
+                {
+                  "name": "permissions",
+                  "item": [
+                    {
+                      "name": "{permission}",
+                      "item": [
+                        {
+                          "name": "connections",
+                          "item": [
+                            {
+                              "name": "{connectionId}",
+                              "item": [
+                                {
+                                  "name": "Grant permission to a connection",
+                                  "id": "28fd205d-46ad-471e-b941-394e95a36286",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "PUT",
+                                    "header": [],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/hubs/:hub/permissions/:permission/connections/:connectionId?api-version=2024-01-01&targetName=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "hubs",
+                                        ":hub",
+                                        "permissions",
+                                        ":permission",
+                                        "connections",
+                                        ":connectionId"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "api-version",
+                                          "value": "2024-01-01"
+                                        },
+                                        {
+                                          "key": "targetName",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "65964546-68d7-42c5-abb7-9a6bfc0eb4a6",
+                                          "key": "hub",
+                                          "value": "pxPj0H_V.BjukeRtv.oh4qSfTGzwmxL_]46p]`CZYtc[",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "000b3012-3199-411d-95cc-9934d6434f0d",
+                                          "key": "permission",
+                                          "value": "sendToGroup",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "c3bd8037-a344-4f71-a26f-b6bcd8ae64d6",
+                                          "key": "connectionId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "ced31c8b-8d77-4344-bb35-263fe3bc5c4f",
+                                      "name": "OK",
+                                      "originalRequest": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/hubs/:hub/permissions/:permission/connections/:connectionId?api-version=2024-01-01&targetName=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "hubs",
+                                            ":hub",
+                                            "permissions",
+                                            ":permission",
+                                            "connections",
+                                            ":connectionId"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "api-version",
+                                              "value": "2024-01-01"
+                                            },
+                                            {
+                                              "key": "targetName",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "hub"
+                                            },
+                                            {
+                                              "key": "permission"
+                                            },
+                                            {
+                                              "key": "connectionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T02:10:45.000Z",
+                                      "updatedAt": "2026-07-28T02:10:45.000Z",
+                                      "uid": "35240-ced31c8b-8d77-4344-bb35-263fe3bc5c4f"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T02:10:45.000Z",
+                                  "updatedAt": "2026-07-28T02:10:45.000Z",
+                                  "uid": "35240-28fd205d-46ad-471e-b941-394e95a36286"
+                                },
+                                {
+                                  "name": "Revoke permission from a connection",
+                                  "id": "56f3bf53-0365-4f4a-a589-77430e70084e",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "DELETE",
+                                    "header": [],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/hubs/:hub/permissions/:permission/connections/:connectionId?api-version=2024-01-01",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "hubs",
+                                        ":hub",
+                                        "permissions",
+                                        ":permission",
+                                        "connections",
+                                        ":connectionId"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "api-version",
+                                          "value": "2024-01-01"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "9d5f9e61-9633-4119-9142-42992185ac90",
+                                          "key": "hub",
+                                          "value": "pxPj0H_V.BjukeRtv.oh4qSfTGzwmxL_]46p]`CZYtc[",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "d5714312-6286-4a6f-bcbc-afd39d1881d5",
+                                          "key": "permission",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "93367b14-cb6d-4bb3-ba97-b0a93623c1ca",
+                                          "key": "connectionId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "93150aa3-e775-41e8-9d8d-bae8eafc175c",
+                                      "name": "No Content",
+                                      "originalRequest": {
+                                        "method": "DELETE",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/hubs/:hub/permissions/:permission/connections/:connectionId?api-version=2024-01-01",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "hubs",
+                                            ":hub",
+                                            "permissions",
+                                            ":permission",
+                                            "connections",
+                                            ":connectionId"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "api-version",
+                                              "value": "2024-01-01"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "hub"
+                                            },
+                                            {
+                                              "key": "permission"
+                                            },
+                                            {
+                                              "key": "connectionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "No Content",
+                                      "code": 204,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T02:10:45.000Z",
+                                      "updatedAt": "2026-07-28T02:10:45.000Z",
+                                      "uid": "35240-93150aa3-e775-41e8-9d8d-bae8eafc175c"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T02:10:45.000Z",
+                                  "updatedAt": "2026-07-28T02:10:45.000Z",
+                                  "uid": "35240-56f3bf53-0365-4f4a-a589-77430e70084e"
+                                },
+                                {
+                                  "name": "Check connection permission",
+                                  "id": "9f9d4085-874c-44ef-a4a2-df9ace0f65a7",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "HEAD",
+                                    "header": [],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/hubs/:hub/permissions/:permission/connections/:connectionId?api-version=2024-01-01",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "hubs",
+                                        ":hub",
+                                        "permissions",
+                                        ":permission",
+                                        "connections",
+                                        ":connectionId"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "api-version",
+                                          "value": "2024-01-01"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "039e69bb-2293-460b-8681-cac0d60c2948",
+                                          "key": "hub",
+                                          "value": "pxPj0H_V.BjukeRtv.oh4qSfTGzwmxL_]46p]`CZYtc[",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "02325b2a-68c9-4859-8d1f-25d8ee604e91",
+                                          "key": "permission",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "f0bd9dda-23f8-4ebd-846d-a74f88928ee8",
+                                          "key": "connectionId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "bba62619-db92-496f-b9e1-b0790f9a6d0f",
+                                      "name": "Has permission",
+                                      "originalRequest": {
+                                        "method": "HEAD",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/hubs/:hub/permissions/:permission/connections/:connectionId?api-version=2024-01-01",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "hubs",
+                                            ":hub",
+                                            "permissions",
+                                            ":permission",
+                                            "connections",
+                                            ":connectionId"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "api-version",
+                                              "value": "2024-01-01"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "hub"
+                                            },
+                                            {
+                                              "key": "permission"
+                                            },
+                                            {
+                                              "key": "connectionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T02:10:45.000Z",
+                                      "updatedAt": "2026-07-28T02:10:45.000Z",
+                                      "uid": "35240-bba62619-db92-496f-b9e1-b0790f9a6d0f"
+                                    },
+                                    {
+                                      "id": "83901757-2f17-44ea-8f2c-41823d74ea74",
+                                      "name": "No permission",
+                                      "originalRequest": {
+                                        "method": "HEAD",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/hubs/:hub/permissions/:permission/connections/:connectionId?api-version=2024-01-01",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "hubs",
+                                            ":hub",
+                                            "permissions",
+                                            ":permission",
+                                            "connections",
+                                            ":connectionId"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "api-version",
+                                              "value": "2024-01-01"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "hub"
+                                            },
+                                            {
+                                              "key": "permission"
+                                            },
+                                            {
+                                              "key": "connectionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T02:10:45.000Z",
+                                      "updatedAt": "2026-07-28T02:10:45.000Z",
+                                      "uid": "35240-83901757-2f17-44ea-8f2c-41823d74ea74"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T02:10:45.000Z",
+                                  "updatedAt": "2026-07-28T02:10:45.000Z",
+                                  "uid": "35240-9f9d4085-874c-44ef-a4a2-df9ace0f65a7"
+                                }
+                              ],
+                              "id": "124ceced-ac76-4d8a-878f-db0ca7abefbb",
+                              "createdAt": "2026-07-28T02:10:45.000Z",
+                              "updatedAt": "2026-07-28T02:10:45.000Z",
+                              "uid": "35240-124ceced-ac76-4d8a-878f-db0ca7abefbb"
+                            }
+                          ],
+                          "id": "d7fb15fa-3522-46de-90d2-2a5c9ef7b198",
+                          "createdAt": "2026-07-28T02:10:45.000Z",
+                          "updatedAt": "2026-07-28T02:10:45.000Z",
+                          "uid": "35240-d7fb15fa-3522-46de-90d2-2a5c9ef7b198"
+                        }
+                      ],
+                      "id": "22664f1b-53dd-427d-b970-881febe2cae7",
+                      "createdAt": "2026-07-28T02:10:45.000Z",
+                      "updatedAt": "2026-07-28T02:10:45.000Z",
+                      "uid": "35240-22664f1b-53dd-427d-b970-881febe2cae7"
+                    }
+                  ],
+                  "id": "78bfe189-b4af-4c01-9dee-470b3f1ec26e",
+                  "createdAt": "2026-07-28T02:10:45.000Z",
+                  "updatedAt": "2026-07-28T02:10:45.000Z",
+                  "uid": "35240-78bfe189-b4af-4c01-9dee-470b3f1ec26e"
+                }
+              ],
+              "id": "c8d22ac1-3a97-4ba5-acfa-364f0cf44fab",
+              "createdAt": "2026-07-28T02:10:45.000Z",
+              "updatedAt": "2026-07-28T02:10:45.000Z",
+              "uid": "35240-c8d22ac1-3a97-4ba5-acfa-364f0cf44fab"
+            }
+          ],
+          "id": "6063fa85-d60b-4d70-bf87-7c9ff2aad300",
+          "createdAt": "2026-07-28T02:10:45.000Z",
+          "updatedAt": "2026-07-28T02:10:45.000Z",
+          "uid": "35240-6063fa85-d60b-4d70-bf87-7c9ff2aad300"
+        }
+      ],
+      "id": "2f5fe274-7239-4ef5-969c-c6b8146c64ca",
+      "createdAt": "2026-07-28T02:10:45.000Z",
+      "updatedAt": "2026-07-28T02:10:45.000Z",
+      "uid": "35240-2f5fe274-7239-4ef5-969c-c6b8146c64ca"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "example"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.webpubsub.azure.com"
+    }
+  ]
+}

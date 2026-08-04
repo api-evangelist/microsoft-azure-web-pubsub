@@ -1,0 +1,2266 @@
+{
+  "info": {
+    "_postman_id": "f09ae209-ff8c-4f2e-b2a7-160a22d2d1a4",
+    "name": "Azure Web PubSub Service Data Plane REST ClientToken Hub API",
+    "description": "Data plane REST API for Azure Web PubSub. Lets app servers send messages\nto connected WebSocket clients (broadcast, group, user, connection),\nmanage connection/group/user membership, generate client tokens, and\ncheck/grant/revoke permissions. Authentication uses a JWT bearer token\nsigned with the service AccessKey (HS256) or a Microsoft Entra ID token\nwith scope https://webpubsub.azure.com/.default.\n\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:10:43.000Z",
+    "updatedAt": "2026-07-28T02:10:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f09ae209-ff8c-4f2e-b2a7-160a22d2d1a4"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "hubs",
+          "item": [
+            {
+              "name": "{hub}",
+              "item": [
+                {
+                  "name": ":send",
+                  "item": [
+                    {
+                      "name": "Broadcast a message to all connections in the hub",
+                      "id": "ef6d62ee-4236-422a-8f3a-f7ee0f8d9e4e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/hubs/:hub/:send?api-version=2024-01-01&excluded=<string>&excluded=<string>&filter=<string>&messageTtlSeconds=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "hubs",
+                            ":hub",
+                            ":send"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "api-version",
+                              "value": "2024-01-01"
+                            },
+                            {
+                              "description": "Excluded connection Ids",
+                              "key": "excluded",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Excluded connection Ids",
+                              "key": "excluded",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "OData filter to limit recipients",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "messageTtlSeconds",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "ebdb5138-1449-4218-9114-5e45672f0dca",
+                              "key": "hub",
+                              "value": "keZ8hyNM[,k1cP2`6wVC2oXdSUhe7o99nJF9jK9vgmE`JzONs`orn",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "0078d1c1-f023-4a98-aed8-1ef20624fd04",
+                              "key": "send"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "7e9b33ec-ef49-4ecb-92de-3921f2acd64c",
+                          "name": "Accepted",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/hubs/:hub/:send?api-version=2024-01-01&excluded=<string>&filter=<string>&messageTtlSeconds=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "hubs",
+                                ":hub",
+                                ":send"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "api-version",
+                                  "value": "2024-01-01"
+                                },
+                                {
+                                  "description": "Excluded connection Ids",
+                                  "key": "excluded",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "OData filter to limit recipients",
+                                  "key": "filter",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "messageTtlSeconds",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "hub"
+                                },
+                                {
+                                  "key": "send"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Accepted",
+                          "code": 202,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:10:44.000Z",
+                          "updatedAt": "2026-07-28T02:10:44.000Z",
+                          "uid": "35240-7e9b33ec-ef49-4ecb-92de-3921f2acd64c"
+                        },
+                        {
+                          "id": "dae65131-7d34-4ad6-b2f2-11db9b068f57",
+                          "name": "Error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/hubs/:hub/:send?api-version=2024-01-01&excluded=<string>&filter=<string>&messageTtlSeconds=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "hubs",
+                                ":hub",
+                                ":send"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "api-version",
+                                  "value": "2024-01-01"
+                                },
+                                {
+                                  "description": "Excluded connection Ids",
+                                  "key": "excluded",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "OData filter to limit recipients",
+                                  "key": "filter",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "messageTtlSeconds",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "hub"
+                                },
+                                {
+                                  "key": "send"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"target\": \"<string>\",\n  \"details\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/ErrorDetail detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/ErrorDetail detected>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:10:44.000Z",
+                          "updatedAt": "2026-07-28T02:10:44.000Z",
+                          "uid": "35240-dae65131-7d34-4ad6-b2f2-11db9b068f57"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:10:44.000Z",
+                      "updatedAt": "2026-07-28T02:10:44.000Z",
+                      "uid": "35240-ef6d62ee-4236-422a-8f3a-f7ee0f8d9e4e"
+                    }
+                  ],
+                  "id": "df1d1ec8-39df-40cf-a919-b1a876cc9016",
+                  "createdAt": "2026-07-28T02:10:44.000Z",
+                  "updatedAt": "2026-07-28T02:10:44.000Z",
+                  "uid": "35240-df1d1ec8-39df-40cf-a919-b1a876cc9016"
+                },
+                {
+                  "name": "connections",
+                  "item": [
+                    {
+                      "name": "{connectionId}",
+                      "item": [
+                        {
+                          "name": ":send",
+                          "item": [
+                            {
+                              "name": "Send message to a specific connection",
+                              "id": "30113f47-699c-450c-85ab-cc285943e5d2",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/hubs/:hub/connections/:connectionId/:send?api-version=2024-01-01",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "hubs",
+                                    ":hub",
+                                    "connections",
+                                    ":connectionId",
+                                    ":send"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "api-version",
+                                      "value": "2024-01-01"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "50f63ae6-2287-4ac7-bbe4-85b9a53181d3",
+                                      "key": "hub",
+                                      "value": "keZ8hyNM[,k1cP2`6wVC2oXdSUhe7o99nJF9jK9vgmE`JzONs`orn",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "1056a9e9-9363-4d3b-bbde-60aa7d91a99d",
+                                      "key": "connectionId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "ada4d67c-7101-43cc-acff-ba21fb93d7d6",
+                                      "key": "send"
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "2e095e0c-ffff-4370-b3ef-b545b7e6685b",
+                                  "name": "Accepted",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/hubs/:hub/connections/:connectionId/:send?api-version=2024-01-01",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "hubs",
+                                        ":hub",
+                                        "connections",
+                                        ":connectionId",
+                                        ":send"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "api-version",
+                                          "value": "2024-01-01"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "hub"
+                                        },
+                                        {
+                                          "key": "connectionId"
+                                        },
+                                        {
+                                          "key": "send"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Accepted",
+                                  "code": 202,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T02:10:44.000Z",
+                                  "updatedAt": "2026-07-28T02:10:44.000Z",
+                                  "uid": "35240-2e095e0c-ffff-4370-b3ef-b545b7e6685b"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T02:10:44.000Z",
+                              "updatedAt": "2026-07-28T02:10:44.000Z",
+                              "uid": "35240-30113f47-699c-450c-85ab-cc285943e5d2"
+                            }
+                          ],
+                          "id": "946fbcf3-3d2c-429c-bcb3-1baf7dbf1719",
+                          "createdAt": "2026-07-28T02:10:44.000Z",
+                          "updatedAt": "2026-07-28T02:10:44.000Z",
+                          "uid": "35240-946fbcf3-3d2c-429c-bcb3-1baf7dbf1719"
+                        },
+                        {
+                          "name": "Check if a connection exists",
+                          "id": "a6f5d842-d3f6-4bcc-bb3b-9d107a8088bd",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "HEAD",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/hubs/:hub/connections/:connectionId?api-version=2024-01-01",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "hubs",
+                                ":hub",
+                                "connections",
+                                ":connectionId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "api-version",
+                                  "value": "2024-01-01"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "27b2f726-5df5-48fc-9f65-1601fcb257a5",
+                                  "key": "hub",
+                                  "value": "keZ8hyNM[,k1cP2`6wVC2oXdSUhe7o99nJF9jK9vgmE`JzONs`orn",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "a1191560-5ce1-49bf-8f41-5897841b07f6",
+                                  "key": "connectionId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "b293750a-049b-4227-a078-35ef2be32866",
+                              "name": "Connection exists",
+                              "originalRequest": {
+                                "method": "HEAD",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/hubs/:hub/connections/:connectionId?api-version=2024-01-01",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "hubs",
+                                    ":hub",
+                                    "connections",
+                                    ":connectionId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "api-version",
+                                      "value": "2024-01-01"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "hub"
+                                    },
+                                    {
+                                      "key": "connectionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:10:44.000Z",
+                              "updatedAt": "2026-07-28T02:10:44.000Z",
+                              "uid": "35240-b293750a-049b-4227-a078-35ef2be32866"
+                            },
+                            {
+                              "id": "e9b44025-9995-4906-ac9b-4be6976a5fce",
+                              "name": "Connection does not exist",
+                              "originalRequest": {
+                                "method": "HEAD",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/hubs/:hub/connections/:connectionId?api-version=2024-01-01",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "hubs",
+                                    ":hub",
+                                    "connections",
+                                    ":connectionId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "api-version",
+                                      "value": "2024-01-01"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "hub"
+                                    },
+                                    {
+                                      "key": "connectionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:10:44.000Z",
+                              "updatedAt": "2026-07-28T02:10:44.000Z",
+                              "uid": "35240-e9b44025-9995-4906-ac9b-4be6976a5fce"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:10:44.000Z",
+                          "updatedAt": "2026-07-28T02:10:44.000Z",
+                          "uid": "35240-a6f5d842-d3f6-4bcc-bb3b-9d107a8088bd"
+                        },
+                        {
+                          "name": "Close a connection",
+                          "id": "e99d7f7f-c330-41df-af81-c54da4b356b6",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/hubs/:hub/connections/:connectionId?api-version=2024-01-01&reason=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "hubs",
+                                ":hub",
+                                "connections",
+                                ":connectionId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "api-version",
+                                  "value": "2024-01-01"
+                                },
+                                {
+                                  "key": "reason",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "b9062524-78a4-419c-a7c5-d168afe8e4c0",
+                                  "key": "hub",
+                                  "value": "keZ8hyNM[,k1cP2`6wVC2oXdSUhe7o99nJF9jK9vgmE`JzONs`orn",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "09c0e34f-1e7b-4249-84cd-730fb2d45a8f",
+                                  "key": "connectionId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "1d52eb1b-ceb0-45b8-a727-c7ce0ad24619",
+                              "name": "No Content",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/hubs/:hub/connections/:connectionId?api-version=2024-01-01&reason=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "hubs",
+                                    ":hub",
+                                    "connections",
+                                    ":connectionId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "api-version",
+                                      "value": "2024-01-01"
+                                    },
+                                    {
+                                      "key": "reason",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "hub"
+                                    },
+                                    {
+                                      "key": "connectionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:10:44.000Z",
+                              "updatedAt": "2026-07-28T02:10:44.000Z",
+                              "uid": "35240-1d52eb1b-ceb0-45b8-a727-c7ce0ad24619"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:10:44.000Z",
+                          "updatedAt": "2026-07-28T02:10:44.000Z",
+                          "uid": "35240-e99d7f7f-c330-41df-af81-c54da4b356b6"
+                        }
+                      ],
+                      "id": "c4dc5418-86ef-482f-8482-ba28ce7bb9f2",
+                      "createdAt": "2026-07-28T02:10:44.000Z",
+                      "updatedAt": "2026-07-28T02:10:44.000Z",
+                      "uid": "35240-c4dc5418-86ef-482f-8482-ba28ce7bb9f2"
+                    }
+                  ],
+                  "id": "2e7e359f-0dc4-46cf-95ff-aade113f3bd6",
+                  "createdAt": "2026-07-28T02:10:44.000Z",
+                  "updatedAt": "2026-07-28T02:10:44.000Z",
+                  "uid": "35240-2e7e359f-0dc4-46cf-95ff-aade113f3bd6"
+                },
+                {
+                  "name": "groups",
+                  "item": [
+                    {
+                      "name": "{group}",
+                      "item": [
+                        {
+                          "name": ":send",
+                          "item": [
+                            {
+                              "name": "Send message to a group of connections",
+                              "id": "b980bea7-6fe5-4066-ad87-fe973226133c",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/hubs/:hub/groups/:group/:send?api-version=2024-01-01&filter=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "hubs",
+                                    ":hub",
+                                    "groups",
+                                    ":group",
+                                    ":send"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "api-version",
+                                      "value": "2024-01-01"
+                                    },
+                                    {
+                                      "key": "filter",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "faf9fd5b-1dec-4804-a12a-47b3ae4ea81e",
+                                      "key": "hub",
+                                      "value": "keZ8hyNM[,k1cP2`6wVC2oXdSUhe7o99nJF9jK9vgmE`JzONs`orn",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "8292a379-6991-44a7-a4a7-e9079df930b9",
+                                      "key": "group",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "649dfe55-36b2-4eaa-83dd-38680bb80a56",
+                                      "key": "send"
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "ebe4cd2a-df45-4b69-a53b-065876ddfb17",
+                                  "name": "Accepted",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/hubs/:hub/groups/:group/:send?api-version=2024-01-01&filter=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "hubs",
+                                        ":hub",
+                                        "groups",
+                                        ":group",
+                                        ":send"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "api-version",
+                                          "value": "2024-01-01"
+                                        },
+                                        {
+                                          "key": "filter",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "hub"
+                                        },
+                                        {
+                                          "key": "group"
+                                        },
+                                        {
+                                          "key": "send"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Accepted",
+                                  "code": 202,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T02:10:44.000Z",
+                                  "updatedAt": "2026-07-28T02:10:44.000Z",
+                                  "uid": "35240-ebe4cd2a-df45-4b69-a53b-065876ddfb17"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T02:10:44.000Z",
+                              "updatedAt": "2026-07-28T02:10:44.000Z",
+                              "uid": "35240-b980bea7-6fe5-4066-ad87-fe973226133c"
+                            }
+                          ],
+                          "id": "c9f95e0f-7d0b-41fd-8508-82f70949719c",
+                          "createdAt": "2026-07-28T02:10:44.000Z",
+                          "updatedAt": "2026-07-28T02:10:44.000Z",
+                          "uid": "35240-c9f95e0f-7d0b-41fd-8508-82f70949719c"
+                        },
+                        {
+                          "name": ":close",
+                          "item": [
+                            {
+                              "name": "Close connections in a group",
+                              "id": "a5e3d4f4-7876-4ed5-9e66-863093c24487",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/hubs/:hub/groups/:group/:close?api-version=2024-01-01",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "hubs",
+                                    ":hub",
+                                    "groups",
+                                    ":group",
+                                    ":close"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "api-version",
+                                      "value": "2024-01-01"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "8dfcaf55-1d3a-47ef-8a8a-b6b6627bf10e",
+                                      "key": "hub",
+                                      "value": "keZ8hyNM[,k1cP2`6wVC2oXdSUhe7o99nJF9jK9vgmE`JzONs`orn",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "ddaac0a8-9a11-403e-bb43-ef0f60eb0d25",
+                                      "key": "group",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "8b223806-7e56-4a6f-9f8a-f942be9b8e77",
+                                      "key": "close"
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "ab688067-2622-45dd-9a6b-0400dec57d0c",
+                                  "name": "No Content",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/hubs/:hub/groups/:group/:close?api-version=2024-01-01",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "hubs",
+                                        ":hub",
+                                        "groups",
+                                        ":group",
+                                        ":close"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "api-version",
+                                          "value": "2024-01-01"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "hub"
+                                        },
+                                        {
+                                          "key": "group"
+                                        },
+                                        {
+                                          "key": "close"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "No Content",
+                                  "code": 204,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T02:10:44.000Z",
+                                  "updatedAt": "2026-07-28T02:10:44.000Z",
+                                  "uid": "35240-ab688067-2622-45dd-9a6b-0400dec57d0c"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T02:10:44.000Z",
+                              "updatedAt": "2026-07-28T02:10:44.000Z",
+                              "uid": "35240-a5e3d4f4-7876-4ed5-9e66-863093c24487"
+                            }
+                          ],
+                          "id": "7233320e-2590-406c-adc4-3f7807956909",
+                          "createdAt": "2026-07-28T02:10:44.000Z",
+                          "updatedAt": "2026-07-28T02:10:44.000Z",
+                          "uid": "35240-7233320e-2590-406c-adc4-3f7807956909"
+                        },
+                        {
+                          "name": "connections",
+                          "item": [
+                            {
+                              "name": "{connectionId}",
+                              "item": [
+                                {
+                                  "name": "Add a connection to a group",
+                                  "id": "0e55f8ed-9988-4f33-9e0f-8dcded402273",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "PUT",
+                                    "header": [],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/hubs/:hub/groups/:group/connections/:connectionId?api-version=2024-01-01",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "hubs",
+                                        ":hub",
+                                        "groups",
+                                        ":group",
+                                        "connections",
+                                        ":connectionId"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "api-version",
+                                          "value": "2024-01-01"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "aef1b40a-4dea-48ef-86fb-706ac49d6a0b",
+                                          "key": "hub",
+                                          "value": "keZ8hyNM[,k1cP2`6wVC2oXdSUhe7o99nJF9jK9vgmE`JzONs`orn",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "2f1f8a9f-e1bf-42fe-87a5-810872b97def",
+                                          "key": "group",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "37fb4bd6-eff9-4a4d-9546-b78b9d9d7419",
+                                          "key": "connectionId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "18f7a354-5fa4-4814-8210-9c1c77ef08c7",
+                                      "name": "OK",
+                                      "originalRequest": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/hubs/:hub/groups/:group/connections/:connectionId?api-version=2024-01-01",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "hubs",
+                                            ":hub",
+                                            "groups",
+                                            ":group",
+                                            "connections",
+                                            ":connectionId"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "api-version",
+                                              "value": "2024-01-01"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "hub"
+                                            },
+                                            {
+                                              "key": "group"
+                                            },
+                                            {
+                                              "key": "connectionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T02:10:44.000Z",
+                                      "updatedAt": "2026-07-28T02:10:44.000Z",
+                                      "uid": "35240-18f7a354-5fa4-4814-8210-9c1c77ef08c7"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T02:10:44.000Z",
+                                  "updatedAt": "2026-07-28T02:10:44.000Z",
+                                  "uid": "35240-0e55f8ed-9988-4f33-9e0f-8dcded402273"
+                                },
+                                {
+                                  "name": "Remove a connection from a group",
+                                  "id": "ae48752c-838c-4b04-bed0-da7f2290386f",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "DELETE",
+                                    "header": [],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/hubs/:hub/groups/:group/connections/:connectionId?api-version=2024-01-01",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "hubs",
+                                        ":hub",
+                                        "groups",
+                                        ":group",
+                                        "connections",
+                                        ":connectionId"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "api-version",
+                                          "value": "2024-01-01"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "74abf02d-d937-4158-97bb-fb622abb753f",
+                                          "key": "hub",
+                                          "value": "keZ8hyNM[,k1cP2`6wVC2oXdSUhe7o99nJF9jK9vgmE`JzONs`orn",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "fc270759-864a-4aef-bcde-541dde6174cb",
+                                          "key": "group",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "3e726c2e-dcc3-473c-a7f2-a5a72e762ea2",
+                                          "key": "connectionId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "f60366b9-ffb3-440a-8880-e12606643642",
+                                      "name": "No Content",
+                                      "originalRequest": {
+                                        "method": "DELETE",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/hubs/:hub/groups/:group/connections/:connectionId?api-version=2024-01-01",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "hubs",
+                                            ":hub",
+                                            "groups",
+                                            ":group",
+                                            "connections",
+                                            ":connectionId"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "api-version",
+                                              "value": "2024-01-01"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "hub"
+                                            },
+                                            {
+                                              "key": "group"
+                                            },
+                                            {
+                                              "key": "connectionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "No Content",
+                                      "code": 204,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T02:10:44.000Z",
+                                      "updatedAt": "2026-07-28T02:10:44.000Z",
+                                      "uid": "35240-f60366b9-ffb3-440a-8880-e12606643642"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T02:10:44.000Z",
+                                  "updatedAt": "2026-07-28T02:10:44.000Z",
+                                  "uid": "35240-ae48752c-838c-4b04-bed0-da7f2290386f"
+                                }
+                              ],
+                              "id": "32795888-858e-4f9c-8d9b-27673ca6b506",
+                              "createdAt": "2026-07-28T02:10:44.000Z",
+                              "updatedAt": "2026-07-28T02:10:44.000Z",
+                              "uid": "35240-32795888-858e-4f9c-8d9b-27673ca6b506"
+                            }
+                          ],
+                          "id": "282178fe-cc08-4141-8712-d58c571d48ee",
+                          "createdAt": "2026-07-28T02:10:44.000Z",
+                          "updatedAt": "2026-07-28T02:10:44.000Z",
+                          "uid": "35240-282178fe-cc08-4141-8712-d58c571d48ee"
+                        },
+                        {
+                          "name": "users",
+                          "item": [
+                            {
+                              "name": "{userId}",
+                              "item": [
+                                {
+                                  "name": "Add a user to a group",
+                                  "id": "e8a67f0a-bf7b-40e7-a434-f7c9d3a46e5a",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "PUT",
+                                    "header": [],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/hubs/:hub/groups/:group/users/:userId?api-version=2024-01-01",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "hubs",
+                                        ":hub",
+                                        "groups",
+                                        ":group",
+                                        "users",
+                                        ":userId"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "api-version",
+                                          "value": "2024-01-01"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "bdc2d3e5-a71f-40ea-ad8c-69a0ae3fd6ff",
+                                          "key": "hub",
+                                          "value": "keZ8hyNM[,k1cP2`6wVC2oXdSUhe7o99nJF9jK9vgmE`JzONs`orn",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "f21adba4-9b23-473b-81f2-d20ab82cc2be",
+                                          "key": "group",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "b820899c-21bf-415f-9366-8bcb29bb6540",
+                                          "key": "userId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "cdd4f904-02c3-460b-9a3f-3b7e20d47c3c",
+                                      "name": "OK",
+                                      "originalRequest": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/hubs/:hub/groups/:group/users/:userId?api-version=2024-01-01",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "hubs",
+                                            ":hub",
+                                            "groups",
+                                            ":group",
+                                            "users",
+                                            ":userId"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "api-version",
+                                              "value": "2024-01-01"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "hub"
+                                            },
+                                            {
+                                              "key": "group"
+                                            },
+                                            {
+                                              "key": "userId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T02:10:44.000Z",
+                                      "updatedAt": "2026-07-28T02:10:44.000Z",
+                                      "uid": "35240-cdd4f904-02c3-460b-9a3f-3b7e20d47c3c"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T02:10:44.000Z",
+                                  "updatedAt": "2026-07-28T02:10:44.000Z",
+                                  "uid": "35240-e8a67f0a-bf7b-40e7-a434-f7c9d3a46e5a"
+                                },
+                                {
+                                  "name": "Remove a user from a group",
+                                  "id": "e1b0b152-3fb0-41c8-ab50-25a4af6b4d6a",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "DELETE",
+                                    "header": [],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/hubs/:hub/groups/:group/users/:userId?api-version=2024-01-01",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "hubs",
+                                        ":hub",
+                                        "groups",
+                                        ":group",
+                                        "users",
+                                        ":userId"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "api-version",
+                                          "value": "2024-01-01"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "4d1d07bc-9ef0-4823-bac9-01811ff487e7",
+                                          "key": "hub",
+                                          "value": "keZ8hyNM[,k1cP2`6wVC2oXdSUhe7o99nJF9jK9vgmE`JzONs`orn",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "23956c74-3e7a-44fe-a982-2a8a14c777d1",
+                                          "key": "group",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "0f6958f6-46c0-41cc-99ea-26502975d0ca",
+                                          "key": "userId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "889a29eb-803a-440c-b23b-8c058bfddc17",
+                                      "name": "No Content",
+                                      "originalRequest": {
+                                        "method": "DELETE",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/hubs/:hub/groups/:group/users/:userId?api-version=2024-01-01",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "hubs",
+                                            ":hub",
+                                            "groups",
+                                            ":group",
+                                            "users",
+                                            ":userId"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "api-version",
+                                              "value": "2024-01-01"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "hub"
+                                            },
+                                            {
+                                              "key": "group"
+                                            },
+                                            {
+                                              "key": "userId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "No Content",
+                                      "code": 204,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T02:10:44.000Z",
+                                      "updatedAt": "2026-07-28T02:10:44.000Z",
+                                      "uid": "35240-889a29eb-803a-440c-b23b-8c058bfddc17"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T02:10:44.000Z",
+                                  "updatedAt": "2026-07-28T02:10:44.000Z",
+                                  "uid": "35240-e1b0b152-3fb0-41c8-ab50-25a4af6b4d6a"
+                                }
+                              ],
+                              "id": "5860026d-d5ab-49bc-842a-b8c2bf13fcfe",
+                              "createdAt": "2026-07-28T02:10:44.000Z",
+                              "updatedAt": "2026-07-28T02:10:44.000Z",
+                              "uid": "35240-5860026d-d5ab-49bc-842a-b8c2bf13fcfe"
+                            }
+                          ],
+                          "id": "2943699d-2eca-44f7-bb48-8bb219221ce0",
+                          "createdAt": "2026-07-28T02:10:44.000Z",
+                          "updatedAt": "2026-07-28T02:10:44.000Z",
+                          "uid": "35240-2943699d-2eca-44f7-bb48-8bb219221ce0"
+                        },
+                        {
+                          "name": "Check if a group has any connections",
+                          "id": "f2a9ad3a-aa96-4724-9308-625eaa335827",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "HEAD",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/hubs/:hub/groups/:group?api-version=2024-01-01",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "hubs",
+                                ":hub",
+                                "groups",
+                                ":group"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "api-version",
+                                  "value": "2024-01-01"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "df961eb7-984c-43ef-827f-a43c246215ab",
+                                  "key": "hub",
+                                  "value": "keZ8hyNM[,k1cP2`6wVC2oXdSUhe7o99nJF9jK9vgmE`JzONs`orn",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "c641140b-f8e3-4d0b-bbff-c016efe16c3e",
+                                  "key": "group",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "6e674e3f-87ed-49ff-9af6-da959e379635",
+                              "name": "Group has connections",
+                              "originalRequest": {
+                                "method": "HEAD",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/hubs/:hub/groups/:group?api-version=2024-01-01",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "hubs",
+                                    ":hub",
+                                    "groups",
+                                    ":group"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "api-version",
+                                      "value": "2024-01-01"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "hub"
+                                    },
+                                    {
+                                      "key": "group"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:10:44.000Z",
+                              "updatedAt": "2026-07-28T02:10:44.000Z",
+                              "uid": "35240-6e674e3f-87ed-49ff-9af6-da959e379635"
+                            },
+                            {
+                              "id": "a800c61b-bc62-46e2-8a7d-6062e21a7dc9",
+                              "name": "Empty group",
+                              "originalRequest": {
+                                "method": "HEAD",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/hubs/:hub/groups/:group?api-version=2024-01-01",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "hubs",
+                                    ":hub",
+                                    "groups",
+                                    ":group"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "api-version",
+                                      "value": "2024-01-01"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "hub"
+                                    },
+                                    {
+                                      "key": "group"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:10:44.000Z",
+                              "updatedAt": "2026-07-28T02:10:44.000Z",
+                              "uid": "35240-a800c61b-bc62-46e2-8a7d-6062e21a7dc9"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:10:44.000Z",
+                          "updatedAt": "2026-07-28T02:10:44.000Z",
+                          "uid": "35240-f2a9ad3a-aa96-4724-9308-625eaa335827"
+                        }
+                      ],
+                      "id": "9c8a73b1-83e2-425f-ba8b-e5c594a44cc0",
+                      "createdAt": "2026-07-28T02:10:44.000Z",
+                      "updatedAt": "2026-07-28T02:10:44.000Z",
+                      "uid": "35240-9c8a73b1-83e2-425f-ba8b-e5c594a44cc0"
+                    }
+                  ],
+                  "id": "55097680-e0bb-4b85-b8c2-f75602ec9ef5",
+                  "createdAt": "2026-07-28T02:10:44.000Z",
+                  "updatedAt": "2026-07-28T02:10:44.000Z",
+                  "uid": "35240-55097680-e0bb-4b85-b8c2-f75602ec9ef5"
+                },
+                {
+                  "name": "users",
+                  "item": [
+                    {
+                      "name": "{userId}",
+                      "item": [
+                        {
+                          "name": ":send",
+                          "item": [
+                            {
+                              "name": "Send message to a specific user",
+                              "id": "f6fae918-88d2-4076-9532-d3ef236aef8b",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/hubs/:hub/users/:userId/:send?api-version=2024-01-01",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "hubs",
+                                    ":hub",
+                                    "users",
+                                    ":userId",
+                                    ":send"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "api-version",
+                                      "value": "2024-01-01"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "9a5d64b0-87cc-4a4a-bbc7-e19f43bb393f",
+                                      "key": "hub",
+                                      "value": "keZ8hyNM[,k1cP2`6wVC2oXdSUhe7o99nJF9jK9vgmE`JzONs`orn",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "3a12f5ba-d353-4098-82ef-fc5fe6ce09fc",
+                                      "key": "userId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "4c81a1fe-9ccb-4afa-80e0-f9d9ec328765",
+                                      "key": "send"
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "b6c0bc42-78f2-4923-88c0-a881b6e69881",
+                                  "name": "Accepted",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/hubs/:hub/users/:userId/:send?api-version=2024-01-01",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "hubs",
+                                        ":hub",
+                                        "users",
+                                        ":userId",
+                                        ":send"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "api-version",
+                                          "value": "2024-01-01"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "hub"
+                                        },
+                                        {
+                                          "key": "userId"
+                                        },
+                                        {
+                                          "key": "send"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Accepted",
+                                  "code": 202,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T02:10:44.000Z",
+                                  "updatedAt": "2026-07-28T02:10:44.000Z",
+                                  "uid": "35240-b6c0bc42-78f2-4923-88c0-a881b6e69881"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T02:10:44.000Z",
+                              "updatedAt": "2026-07-28T02:10:44.000Z",
+                              "uid": "35240-f6fae918-88d2-4076-9532-d3ef236aef8b"
+                            }
+                          ],
+                          "id": "5016ddee-4d7a-4c12-a98e-8f365d2fdf94",
+                          "createdAt": "2026-07-28T02:10:44.000Z",
+                          "updatedAt": "2026-07-28T02:10:44.000Z",
+                          "uid": "35240-5016ddee-4d7a-4c12-a98e-8f365d2fdf94"
+                        },
+                        {
+                          "name": ":close",
+                          "item": [
+                            {
+                              "name": "Close connections for a user",
+                              "id": "f64159ef-6b7c-43cf-9793-562417e723be",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/hubs/:hub/users/:userId/:close?api-version=2024-01-01",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "hubs",
+                                    ":hub",
+                                    "users",
+                                    ":userId",
+                                    ":close"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "api-version",
+                                      "value": "2024-01-01"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "f215342e-1fe5-4f31-9982-cfb5a4511583",
+                                      "key": "hub",
+                                      "value": "keZ8hyNM[,k1cP2`6wVC2oXdSUhe7o99nJF9jK9vgmE`JzONs`orn",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "5ce35123-bf13-4449-8047-40b49316802e",
+                                      "key": "userId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "115bb5aa-4b5a-4a22-961f-2615bed401a9",
+                                      "key": "close"
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "9842a1f7-37b7-4ebd-9f39-96e8bda19ce4",
+                                  "name": "No Content",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/hubs/:hub/users/:userId/:close?api-version=2024-01-01",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "hubs",
+                                        ":hub",
+                                        "users",
+                                        ":userId",
+                                        ":close"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "api-version",
+                                          "value": "2024-01-01"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "hub"
+                                        },
+                                        {
+                                          "key": "userId"
+                                        },
+                                        {
+                                          "key": "close"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "No Content",
+                                  "code": 204,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T02:10:44.000Z",
+                                  "updatedAt": "2026-07-28T02:10:44.000Z",
+                                  "uid": "35240-9842a1f7-37b7-4ebd-9f39-96e8bda19ce4"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T02:10:44.000Z",
+                              "updatedAt": "2026-07-28T02:10:44.000Z",
+                              "uid": "35240-f64159ef-6b7c-43cf-9793-562417e723be"
+                            }
+                          ],
+                          "id": "d925e224-ab0d-4bb9-8325-be330647c23a",
+                          "createdAt": "2026-07-28T02:10:44.000Z",
+                          "updatedAt": "2026-07-28T02:10:44.000Z",
+                          "uid": "35240-d925e224-ab0d-4bb9-8325-be330647c23a"
+                        },
+                        {
+                          "name": "Check if a user has any connections",
+                          "id": "16fc18bf-c637-4b28-91e4-d0f2ca852a7e",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "HEAD",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/hubs/:hub/users/:userId?api-version=2024-01-01",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "hubs",
+                                ":hub",
+                                "users",
+                                ":userId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "api-version",
+                                  "value": "2024-01-01"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "996b5e24-3f3f-4bac-85b6-73c99c01a7a1",
+                                  "key": "hub",
+                                  "value": "keZ8hyNM[,k1cP2`6wVC2oXdSUhe7o99nJF9jK9vgmE`JzONs`orn",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "a64e082e-5342-4ae6-ba78-aba059df3847",
+                                  "key": "userId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "924ea57e-1181-47b6-a041-987adf85eb10",
+                              "name": "User has connections",
+                              "originalRequest": {
+                                "method": "HEAD",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/hubs/:hub/users/:userId?api-version=2024-01-01",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "hubs",
+                                    ":hub",
+                                    "users",
+                                    ":userId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "api-version",
+                                      "value": "2024-01-01"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "hub"
+                                    },
+                                    {
+                                      "key": "userId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:10:44.000Z",
+                              "updatedAt": "2026-07-28T02:10:44.000Z",
+                              "uid": "35240-924ea57e-1181-47b6-a041-987adf85eb10"
+                            },
+                            {
+                              "id": "2d90065d-6935-4168-9682-f460b4e6bf79",
+                              "name": "No connection",
+                              "originalRequest": {
+                                "method": "HEAD",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/hubs/:hub/users/:userId?api-version=2024-01-01",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "hubs",
+                                    ":hub",
+                                    "users",
+                                    ":userId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "api-version",
+                                      "value": "2024-01-01"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "hub"
+                                    },
+                                    {
+                                      "key": "userId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:10:44.000Z",
+                              "updatedAt": "2026-07-28T02:10:44.000Z",
+                              "uid": "35240-2d90065d-6935-4168-9682-f460b4e6bf79"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:10:44.000Z",
+                          "updatedAt": "2026-07-28T02:10:44.000Z",
+                          "uid": "35240-16fc18bf-c637-4b28-91e4-d0f2ca852a7e"
+                        }
+                      ],
+                      "id": "bdf39688-526c-45a2-aa87-40e302e9468e",
+                      "createdAt": "2026-07-28T02:10:44.000Z",
+                      "updatedAt": "2026-07-28T02:10:44.000Z",
+                      "uid": "35240-bdf39688-526c-45a2-aa87-40e302e9468e"
+                    }
+                  ],
+                  "id": "e8485063-2d85-49d7-84d8-fe52b70b00b2",
+                  "createdAt": "2026-07-28T02:10:44.000Z",
+                  "updatedAt": "2026-07-28T02:10:44.000Z",
+                  "uid": "35240-e8485063-2d85-49d7-84d8-fe52b70b00b2"
+                },
+                {
+                  "name": ":closeConnections",
+                  "item": [
+                    {
+                      "name": "Close all connections in the hub",
+                      "id": "00904093-7e58-4477-a5d9-1f4bd0c1565d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/hubs/:hub/:closeConnections?api-version=2024-01-01&excluded=<string>&excluded=<string>&reason=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "hubs",
+                            ":hub",
+                            ":closeConnections"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "api-version",
+                              "value": "2024-01-01"
+                            },
+                            {
+                              "key": "excluded",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "excluded",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "reason",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "966d909f-1cf1-46a8-b8cb-bc59bdc5fa14",
+                              "key": "hub",
+                              "value": "keZ8hyNM[,k1cP2`6wVC2oXdSUhe7o99nJF9jK9vgmE`JzONs`orn",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "9c150270-6b9e-417f-8a5b-5fd3a38d0a85",
+                              "key": "closeConnections"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "097bc364-e14a-49cb-8386-e7008c352cc9",
+                          "name": "No Content",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/hubs/:hub/:closeConnections?api-version=2024-01-01&excluded=<string>&reason=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "hubs",
+                                ":hub",
+                                ":closeConnections"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "api-version",
+                                  "value": "2024-01-01"
+                                },
+                                {
+                                  "key": "excluded",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "reason",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "hub"
+                                },
+                                {
+                                  "key": "closeConnections"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:10:44.000Z",
+                          "updatedAt": "2026-07-28T02:10:44.000Z",
+                          "uid": "35240-097bc364-e14a-49cb-8386-e7008c352cc9"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:10:44.000Z",
+                      "updatedAt": "2026-07-28T02:10:44.000Z",
+                      "uid": "35240-00904093-7e58-4477-a5d9-1f4bd0c1565d"
+                    }
+                  ],
+                  "id": "f5e0f975-7e75-477b-b3ae-4d441128c1c8",
+                  "createdAt": "2026-07-28T02:10:44.000Z",
+                  "updatedAt": "2026-07-28T02:10:44.000Z",
+                  "uid": "35240-f5e0f975-7e75-477b-b3ae-4d441128c1c8"
+                }
+              ],
+              "id": "a8ff9a95-f899-4878-a475-10b411ff804c",
+              "createdAt": "2026-07-28T02:10:44.000Z",
+              "updatedAt": "2026-07-28T02:10:44.000Z",
+              "uid": "35240-a8ff9a95-f899-4878-a475-10b411ff804c"
+            }
+          ],
+          "id": "a73ef085-296e-49bc-8807-14b694e3cf36",
+          "createdAt": "2026-07-28T02:10:44.000Z",
+          "updatedAt": "2026-07-28T02:10:44.000Z",
+          "uid": "35240-a73ef085-296e-49bc-8807-14b694e3cf36"
+        }
+      ],
+      "id": "29f09066-d135-40c6-95fc-6c3152148672",
+      "createdAt": "2026-07-28T02:10:44.000Z",
+      "updatedAt": "2026-07-28T02:10:44.000Z",
+      "uid": "35240-29f09066-d135-40c6-95fc-6c3152148672"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "example"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.webpubsub.azure.com"
+    }
+  ]
+}

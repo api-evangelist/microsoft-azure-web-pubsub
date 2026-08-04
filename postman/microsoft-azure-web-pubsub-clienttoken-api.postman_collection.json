@@ -1,0 +1,222 @@
+{
+  "info": {
+    "_postman_id": "942dd7f4-9e18-4352-862b-d80916c0c372",
+    "name": "Azure Web PubSub Service Data Plane REST ClientToken API",
+    "description": "Data plane REST API for Azure Web PubSub. Lets app servers send messages\nto connected WebSocket clients (broadcast, group, user, connection),\nmanage connection/group/user membership, generate client tokens, and\ncheck/grant/revoke permissions. Authentication uses a JWT bearer token\nsigned with the service AccessKey (HS256) or a Microsoft Entra ID token\nwith scope https://webpubsub.azure.com/.default.\n\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:10:42.000Z",
+    "updatedAt": "2026-07-28T02:10:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-942dd7f4-9e18-4352-862b-d80916c0c372"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "hubs",
+          "item": [
+            {
+              "name": "{hub}",
+              "item": [
+                {
+                  "name": ":generateToken",
+                  "item": [
+                    {
+                      "name": "Generate a client access token",
+                      "id": "9bdf3f1d-a85e-4059-baa6-b8f43e382778",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/hubs/:hub/:generateToken?api-version=2024-01-01&userId=<string>&role=<string>&role=<string>&minutesToExpire=60&group=<string>&group=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "hubs",
+                            ":hub",
+                            ":generateToken"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "api-version",
+                              "value": "2024-01-01"
+                            },
+                            {
+                              "key": "userId",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "role",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "role",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "minutesToExpire",
+                              "value": "60"
+                            },
+                            {
+                              "key": "group",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "group",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "767239cb-9e8b-411c-b594-747bbe28966c",
+                              "key": "hub",
+                              "value": "A",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "6f109a38-46c2-45e5-b593-d4411114f867",
+                              "key": "generateToken"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "6b9d2f4d-e460-454d-8c8c-1a32c3763833",
+                          "name": "Token generated",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/hubs/:hub/:generateToken?api-version=2024-01-01&userId=<string>&role=<string>&minutesToExpire=60&group=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "hubs",
+                                ":hub",
+                                ":generateToken"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "api-version",
+                                  "value": "2024-01-01"
+                                },
+                                {
+                                  "key": "userId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "role",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "minutesToExpire",
+                                  "value": "60"
+                                },
+                                {
+                                  "key": "group",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "hub"
+                                },
+                                {
+                                  "key": "generateToken"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"token\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:10:43.000Z",
+                          "updatedAt": "2026-07-28T02:10:43.000Z",
+                          "uid": "35240-6b9d2f4d-e460-454d-8c8c-1a32c3763833"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:10:43.000Z",
+                      "updatedAt": "2026-07-28T02:10:43.000Z",
+                      "uid": "35240-9bdf3f1d-a85e-4059-baa6-b8f43e382778"
+                    }
+                  ],
+                  "id": "2250f7d9-f5d4-465d-9095-8b6dc753576d",
+                  "createdAt": "2026-07-28T02:10:43.000Z",
+                  "updatedAt": "2026-07-28T02:10:43.000Z",
+                  "uid": "35240-2250f7d9-f5d4-465d-9095-8b6dc753576d"
+                }
+              ],
+              "id": "ec6d4bd5-b77b-465f-9e1e-eb384c12a7cd",
+              "createdAt": "2026-07-28T02:10:43.000Z",
+              "updatedAt": "2026-07-28T02:10:43.000Z",
+              "uid": "35240-ec6d4bd5-b77b-465f-9e1e-eb384c12a7cd"
+            }
+          ],
+          "id": "2d556029-c5ce-4e89-9a69-10793df12515",
+          "createdAt": "2026-07-28T02:10:43.000Z",
+          "updatedAt": "2026-07-28T02:10:43.000Z",
+          "uid": "35240-2d556029-c5ce-4e89-9a69-10793df12515"
+        }
+      ],
+      "id": "bc8f3a7f-1997-45d4-8ca6-9bfcb1ddae92",
+      "createdAt": "2026-07-28T02:10:43.000Z",
+      "updatedAt": "2026-07-28T02:10:43.000Z",
+      "uid": "35240-bc8f3a7f-1997-45d4-8ca6-9bfcb1ddae92"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "example"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.webpubsub.azure.com"
+    }
+  ]
+}

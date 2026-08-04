@@ -1,0 +1,18 @@
+{
+  "provider": "microsoft-azure-web-pubsub",
+  "sources": [
+    "microsoft-azure-web-pubsub-clienttoken-api-openapi.yml",
+    "microsoft-azure-web-pubsub-hub-api-openapi.yml",
+    "microsoft-azure-web-pubsub-permission-api-openapi.yml"
+  ],
+  "outputs": [
+    "microsoft-azure-web-pubsub-clienttoken-api-openapi.yml",
+    "microsoft-azure-web-pubsub-hub-api-openapi.yml",
+    "microsoft-azure-web-pubsub-permission-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
