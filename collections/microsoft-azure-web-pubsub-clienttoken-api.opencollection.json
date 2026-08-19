@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azure Web PubSub Service Data Plane REST ClientToken API",
+    "version": "2024-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ClientToken",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate a client access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.webpubsub.azure.com/api/hubs/:hub/:generateToken",
+            "params": [
+              {
+                "name": "hub",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "role",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "minutesToExpire",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Generate a client access token"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

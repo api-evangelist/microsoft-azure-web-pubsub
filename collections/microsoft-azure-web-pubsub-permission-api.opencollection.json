@@ -1,0 +1,128 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azure Web PubSub Service Data Plane REST ClientToken Permission API",
+    "version": "2024-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Permission",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Grant permission to a connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.webpubsub.azure.com/api/hubs/:hub/permissions/:permission/connections/:connectionId",
+            "params": [
+              {
+                "name": "hub",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "permission",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "targetName",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Grant permission to a connection"
+        },
+        {
+          "info": {
+            "name": "Revoke permission from a connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.webpubsub.azure.com/api/hubs/:hub/permissions/:permission/connections/:connectionId",
+            "params": [
+              {
+                "name": "hub",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "permission",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Revoke permission from a connection"
+        },
+        {
+          "info": {
+            "name": "Check connection permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "HEAD",
+            "url": "https://{instance}.webpubsub.azure.com/api/hubs/:hub/permissions/:permission/connections/:connectionId",
+            "params": [
+              {
+                "name": "hub",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "permission",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Check connection permission"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

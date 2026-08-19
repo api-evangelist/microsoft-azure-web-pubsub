@@ -1,0 +1,507 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azure Web PubSub Service Data Plane REST ClientToken Hub API",
+    "version": "2024-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Hub",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcast a message to all connections in the hub",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.webpubsub.azure.com/api/hubs/:hub/:send",
+            "params": [
+              {
+                "name": "hub",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "excluded",
+                "value": "",
+                "type": "query",
+                "description": "Excluded connection Ids"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter to limit recipients"
+              },
+              {
+                "name": "messageTtlSeconds",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Broadcast a message to all connections in the hub"
+        },
+        {
+          "info": {
+            "name": "Send message to a specific connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.webpubsub.azure.com/api/hubs/:hub/connections/:connectionId/:send",
+            "params": [
+              {
+                "name": "hub",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send message to a specific connection"
+        },
+        {
+          "info": {
+            "name": "Send message to a group of connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.webpubsub.azure.com/api/hubs/:hub/groups/:group/:send",
+            "params": [
+              {
+                "name": "hub",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send message to a group of connections"
+        },
+        {
+          "info": {
+            "name": "Send message to a specific user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.webpubsub.azure.com/api/hubs/:hub/users/:userId/:send",
+            "params": [
+              {
+                "name": "hub",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send message to a specific user"
+        },
+        {
+          "info": {
+            "name": "Close a connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.webpubsub.azure.com/api/hubs/:hub/connections/:connectionId",
+            "params": [
+              {
+                "name": "hub",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "reason",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Close a connection"
+        },
+        {
+          "info": {
+            "name": "Check if a connection exists",
+            "type": "http"
+          },
+          "http": {
+            "method": "HEAD",
+            "url": "https://{instance}.webpubsub.azure.com/api/hubs/:hub/connections/:connectionId",
+            "params": [
+              {
+                "name": "hub",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Check if a connection exists"
+        },
+        {
+          "info": {
+            "name": "Close all connections in the hub",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.webpubsub.azure.com/api/hubs/:hub/:closeConnections",
+            "params": [
+              {
+                "name": "hub",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "excluded",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "reason",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Close all connections in the hub"
+        },
+        {
+          "info": {
+            "name": "Close connections in a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.webpubsub.azure.com/api/hubs/:hub/groups/:group/:close",
+            "params": [
+              {
+                "name": "hub",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Close connections in a group"
+        },
+        {
+          "info": {
+            "name": "Close connections for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.webpubsub.azure.com/api/hubs/:hub/users/:userId/:close",
+            "params": [
+              {
+                "name": "hub",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Close connections for a user"
+        },
+        {
+          "info": {
+            "name": "Check if a group has any connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "HEAD",
+            "url": "https://{instance}.webpubsub.azure.com/api/hubs/:hub/groups/:group",
+            "params": [
+              {
+                "name": "hub",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Check if a group has any connections"
+        },
+        {
+          "info": {
+            "name": "Check if a user has any connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "HEAD",
+            "url": "https://{instance}.webpubsub.azure.com/api/hubs/:hub/users/:userId",
+            "params": [
+              {
+                "name": "hub",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Check if a user has any connections"
+        },
+        {
+          "info": {
+            "name": "Add a connection to a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.webpubsub.azure.com/api/hubs/:hub/groups/:group/connections/:connectionId",
+            "params": [
+              {
+                "name": "hub",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Add a connection to a group"
+        },
+        {
+          "info": {
+            "name": "Remove a connection from a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.webpubsub.azure.com/api/hubs/:hub/groups/:group/connections/:connectionId",
+            "params": [
+              {
+                "name": "hub",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Remove a connection from a group"
+        },
+        {
+          "info": {
+            "name": "Add a user to a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.webpubsub.azure.com/api/hubs/:hub/groups/:group/users/:userId",
+            "params": [
+              {
+                "name": "hub",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Add a user to a group"
+        },
+        {
+          "info": {
+            "name": "Remove a user from a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.webpubsub.azure.com/api/hubs/:hub/groups/:group/users/:userId",
+            "params": [
+              {
+                "name": "hub",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Remove a user from a group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
