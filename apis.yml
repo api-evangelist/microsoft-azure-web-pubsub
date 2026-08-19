@@ -23,7 +23,7 @@ tags:
 created: '2026-03-13'
 modified: '2026-05-30'
 url: https://azure.microsoft.com/en-us/services/web-pubsub/
-specificationVersion: '0.18'
+specificationVersion: '0.23'
 apis:
 - name: Azure Web PubSub Client and Upstream Events
   description: >-
