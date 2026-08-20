@@ -64,6 +64,10 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/rest/api/webpubsub/web-pub-sub-hubs
   baseURL: https://management.azure.com
   tags:
+  - Hub
+  - Resource Manager
+  - Web PubSub
+  tags_raw:
   - Hubs
   - Resource Manager
   - Web PubSub
@@ -139,6 +143,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/rest/api/webpubsub/dataplane
   baseURL: https://{instance}.webpubsub.azure.com
   tags:
+  - Client-token
+  tags_raw:
   - ClientToken
   properties:
   - type: OpenAPI
