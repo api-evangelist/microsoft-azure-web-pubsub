@@ -10,8 +10,8 @@ info:
     PUT 200 and send 202 status codes — so the flow is self-describing.
   version: 1.0.0
 sourceDescriptions:
-- name: webPubSubApi
-  url: ../openapi/microsoft-azure-web-pubsub-openapi.yml
+- name: hubApi
+  url: ../openapi/microsoft-azure-web-pubsub-hub-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: onboard-user-to-group

@@ -12,8 +12,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: webPubSubApi
-  url: ../openapi/microsoft-azure-web-pubsub-openapi.yml
+- name: clienttokenApi
+  url: ../openapi/microsoft-azure-web-pubsub-clienttoken-api-openapi.yml
+  type: openapi
+- name: hubApi
+  url: ../openapi/microsoft-azure-web-pubsub-hub-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: generate-token-then-broadcast

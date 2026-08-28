@@ -11,8 +11,8 @@ info:
     documented HEAD 200/404 and send 202 status codes.
   version: 1.0.0
 sourceDescriptions:
-- name: webPubSubApi
-  url: ../openapi/microsoft-azure-web-pubsub-openapi.yml
+- name: hubApi
+  url: ../openapi/microsoft-azure-web-pubsub-hub-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: direct-connection-message

@@ -10,8 +10,8 @@ info:
     api-version query, and documented HEAD 200/404 and DELETE 204 status codes.
   version: 1.0.0
 sourceDescriptions:
-- name: webPubSubApi
-  url: ../openapi/microsoft-azure-web-pubsub-openapi.yml
+- name: hubApi
+  url: ../openapi/microsoft-azure-web-pubsub-hub-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: check-then-close-connection

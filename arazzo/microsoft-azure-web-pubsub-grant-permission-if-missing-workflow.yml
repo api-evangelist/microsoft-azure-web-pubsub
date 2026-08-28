@@ -11,8 +11,8 @@ info:
     status codes — so the flow is self-describing.
   version: 1.0.0
 sourceDescriptions:
-- name: webPubSubApi
-  url: ../openapi/microsoft-azure-web-pubsub-openapi.yml
+- name: permissionApi
+  url: ../openapi/microsoft-azure-web-pubsub-permission-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: grant-permission-if-missing
