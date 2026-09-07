@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Azure Web PubSub Service Data Plane REST ClientToken API
+  title: Azure Web PubSub Service Data Plane REST Client Token API
   description: 'Data plane REST API for Azure Web PubSub. Lets app servers send messages
 
     to connected WebSocket clients (broadcast, group, user, connection),

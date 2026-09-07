@@ -2,13 +2,11 @@
   "repo": "microsoft-azure-web-pubsub",
   "feeds": [
     {
-      "source": "https://devblogs.microsoft.com/azure-sdk/feed/",
-      "feed_url": "https://devblogs.microsoft.com/azure-sdk/feed/",
+      "source": "https://status.azure.com/",
+      "feed_url": "https://status.azure.com/feed/",
       "title": "",
       "saved": 0,
-      "method": "feed",
-      "nature": "undetermined",
-      "nature_basis": null
+      "method": "discovered"
     },
     {
       "source": "https://status.azure.com/feed/",
@@ -18,15 +16,15 @@
       "method": "feed"
     },
     {
-      "source": "https://status.azure.com/",
-      "feed_url": "https://status.azure.com/feed/",
+      "source": "https://devblogs.microsoft.com/azure-sdk/feed/",
+      "feed_url": "https://devblogs.microsoft.com/azure-sdk/feed/",
       "title": "",
       "saved": 0,
-      "method": "discovered"
+      "method": "feed"
     }
   ],
-  "post_count": 42,
-  "fetched": "2026-08-30T22:33:40Z",
+  "post_count": 44,
+  "fetched": "2026-09-06T19:17:18Z",
   "feed_nature": "undetermined",
   "feed_nature_basis": null,
   "feed_nature_note": "Whether these posts are the vendor publishing or its support community, decided on the URL path grammar of the saved posts -- not the hostname, which carries both on Khoros, and not author diversity, which flags large vendor blogs as forums. 'undetermined' means undetermined."
