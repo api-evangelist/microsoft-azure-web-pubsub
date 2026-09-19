@@ -32,6 +32,12 @@ tags:
   - Pub-Sub
   - Real-Time
   - Serverless
+  - WebSocket
+tags_raw:
+  - Messaging
+  - Pub-Sub
+  - Real-Time
+  - Serverless
   - WebSockets
 created: '2026-03-13'
 modified: '2026-05-30'
@@ -49,6 +55,12 @@ apis:
     https://learn.microsoft.com/en-us/azure/azure-web-pubsub/reference-json-webpubsub-subprotocol
   baseURL: wss://{instance}.webpubsub.azure.com
   tags:
+  - AsyncAPI
+  - CloudEvents
+  - Event-Driven
+  - Pub-Sub
+  - WebSocket
+  tags_raw:
   - AsyncAPI
   - CloudEvents
   - Event-Driven
@@ -203,6 +215,8 @@ apis:
     https://learn.microsoft.com/en-us/azure/azure-web-pubsub/reference-json-webpubsub-subprotocol
   baseURL: wss://{instance}.webpubsub.azure.com
   tags:
+  - Client-token
+  tags_raw:
   - Client Token
   properties:
   - type: OpenAPI
