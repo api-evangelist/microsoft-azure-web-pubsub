@@ -1,23 +1,27 @@
 {
   "provider": "microsoft-azure-web-pubsub",
   "sources": [
-    "microsoft-azure-web-pubsub-clienttoken-api-openapi.yml",
-    "microsoft-azure-web-pubsub-hub-api-openapi.yml",
-    "microsoft-azure-web-pubsub-permission-api-openapi.yml"
+    "_original/microsoft-azure-web-pubsub-openapi.yml"
   ],
   "outputs": [
     "microsoft-azure-web-pubsub-clienttoken-api-openapi.yml",
     "microsoft-azure-web-pubsub-hub-api-openapi.yml",
     "microsoft-azure-web-pubsub-permission-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "microsoft-azure-web-pubsub-clienttoken-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "microsoft-azure-web-pubsub-hub-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "microsoft-azure-web-pubsub-permission-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "microsoft-azure-web-pubsub-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: microsoft-azure-web-pubsub-client-token-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 8 total)"
   ],
-  "skipped": []
+  "skipped": [
+    "microsoft-azure-web-pubsub-client-token-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "microsoft-azure-web-pubsub-hub-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "microsoft-azure-web-pubsub-permission-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

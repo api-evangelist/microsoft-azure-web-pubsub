@@ -11,9 +11,7 @@ info:
 
     signed with the service AccessKey (HS256) or a Microsoft Entra ID token
 
-    with scope https://webpubsub.azure.com/.default.
-
-    '
+    with scope https://webpubsub.azure.com/.default.'
   version: '2024-01-01'
   contact:
     name: Kin Lane
@@ -31,13 +29,13 @@ servers:
 security:
 - bearer_auth: []
 tags:
-- name: ClientToken
+- name: Client Token
   description: Generate JWT tokens for client connections
 paths:
   /api/hubs/{hub}/:generateToken:
     post:
       tags:
-      - ClientToken
+      - Client Token
       summary: Generate a client access token
       operationId: webPubSub_generateClientToken
       parameters:

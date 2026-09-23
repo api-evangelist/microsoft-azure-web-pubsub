@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Azure Web PubSub Service Data Plane REST ClientToken Permission API
+  title: Azure Web PubSub Service Data Plane REST Permission API
   description: 'Data plane REST API for Azure Web PubSub. Lets app servers send messages
 
     to connected WebSocket clients (broadcast, group, user, connection),
@@ -11,9 +11,7 @@ info:
 
     signed with the service AccessKey (HS256) or a Microsoft Entra ID token
 
-    with scope https://webpubsub.azure.com/.default.
-
-    '
+    with scope https://webpubsub.azure.com/.default.'
   version: '2024-01-01'
   contact:
     name: Kin Lane
