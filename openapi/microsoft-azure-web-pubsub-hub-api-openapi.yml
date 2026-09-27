@@ -360,19 +360,6 @@ paths:
           description: No Content
 components:
   parameters:
-    group:
-      name: group
-      in: path
-      required: true
-      schema:
-        type: string
-    apiVersion:
-      name: api-version
-      in: query
-      required: true
-      schema:
-        type: string
-        default: '2024-01-01'
     hub:
       name: hub
       in: path
@@ -380,6 +367,26 @@ components:
       schema:
         type: string
         pattern: ^[A-Za-z][A-Za-z0-9_`,.[\]]{0,127}$
+    apiVersion:
+      name: api-version
+      in: query
+      required: true
+      schema:
+        type: string
+        default: '2024-01-01'
+    group:
+      name: group
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    ErrorResponse:
+      description: Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorDetail'
   schemas:
     ErrorDetail:
       type: object
@@ -393,13 +400,6 @@ components:
         details:
           type: array
           items:
-            $ref: '#/components/schemas/ErrorDetail'
-  responses:
-    ErrorResponse:
-      description: Error
-      content:
-        application/json:
-          schema:
             $ref: '#/components/schemas/ErrorDetail'
   securitySchemes:
     bearer_auth:
