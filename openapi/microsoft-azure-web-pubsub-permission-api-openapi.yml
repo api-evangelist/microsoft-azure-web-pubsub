@@ -107,13 +107,6 @@ paths:
           description: No permission
 components:
   parameters:
-    apiVersion:
-      name: api-version
-      in: query
-      required: true
-      schema:
-        type: string
-        default: '2024-01-01'
     hub:
       name: hub
       in: path
@@ -121,6 +114,13 @@ components:
       schema:
         type: string
         pattern: ^[A-Za-z][A-Za-z0-9_`,.[\]]{0,127}$
+    apiVersion:
+      name: api-version
+      in: query
+      required: true
+      schema:
+        type: string
+        default: '2024-01-01'
   securitySchemes:
     bearer_auth:
       type: http

@@ -360,6 +360,12 @@ paths:
           description: No Content
 components:
   parameters:
+    group:
+      name: group
+      in: path
+      required: true
+      schema:
+        type: string
     hub:
       name: hub
       in: path
@@ -374,12 +380,6 @@ components:
       schema:
         type: string
         default: '2024-01-01'
-    group:
-      name: group
-      in: path
-      required: true
-      schema:
-        type: string
   responses:
     ErrorResponse:
       description: Error
