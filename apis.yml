@@ -213,7 +213,7 @@ apis:
   description: Generate JWT tokens for client connections
   humanURL: >-
     https://learn.microsoft.com/en-us/azure/azure-web-pubsub/reference-json-webpubsub-subprotocol
-  baseURL: wss://{instance}.webpubsub.azure.com
+  baseURL: https://{instance}.webpubsub.azure.com
   tags:
   - Client Token
   properties:
@@ -233,6 +233,10 @@ apis:
     url: >-
       https://learn.microsoft.com/en-us/azure/active-directory/develop/authentication-scenarios
 common:
+  - type: Plans
+    url: plans/microsoft-azure-web-pubsub-plans-pricing.yml
+  - type: FinOps
+    url: finops/microsoft-azure-web-pubsub-finops.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/azure-web-pubsub/overview
   - type: AgenticAccess
