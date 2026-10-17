@@ -380,13 +380,6 @@ components:
       schema:
         type: string
         default: '2024-01-01'
-  responses:
-    ErrorResponse:
-      description: Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorDetail'
   schemas:
     ErrorDetail:
       type: object
@@ -400,6 +393,13 @@ components:
         details:
           type: array
           items:
+            $ref: '#/components/schemas/ErrorDetail'
+  responses:
+    ErrorResponse:
+      description: Error
+      content:
+        application/json:
+          schema:
             $ref: '#/components/schemas/ErrorDetail'
   securitySchemes:
     bearer_auth:

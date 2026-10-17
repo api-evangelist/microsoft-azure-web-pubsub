@@ -213,7 +213,7 @@ apis:
   description: Generate JWT tokens for client connections
   humanURL: >-
     https://learn.microsoft.com/en-us/azure/azure-web-pubsub/reference-json-webpubsub-subprotocol
-  baseURL: https://{instance}.webpubsub.azure.com
+  baseURL: wss://{instance}.webpubsub.azure.com
   tags:
   - Client Token
   properties:
