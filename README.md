@@ -1,4 +1,4 @@
-# Azure Web PubSub (microsoft-azure-web-pubsub)
+# Azure Web PubSub
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,206 +66,173 @@
 
 Azure Web PubSub is a fully-managed service that enables building real-time, two-way messaging applications using publish-subscribe patterns over WebSockets. It supports broadcasting messages to clients in groups, sending messages to specific connections or users, and integrating with serverless event handlers for scalable real-time experiences.
 
-**APIs.json:** [https://azure.microsoft.com/en-us/services/web-pubsub/](https://azure.microsoft.com/en-us/services/web-pubsub/)
+**Areas:** Messaging · Pub/Sub · Real-Time · Serverless · WebSocket
 
-## Tags
+## Azure Web PubSub on APIs.io
 
-- Messaging
-- Pub-Sub
-- Real-Time
-- Serverless
-- WebSockets
+Everything profiled for Azure Web PubSub is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/microsoft-azure-web-pubsub/](https://apis.io/providers/microsoft-azure-web-pubsub/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (8)
 
-- **Created:** 2026-03-13
-- **Modified:** 2026-05-30
+- [Azure Web PubSub Client and Upstream Events](https://apis.io/apis/microsoft-azure-web-pubsub/azure-web-pubsub-client-and-upstream-events/) — AsyncAPI 2.6 description of the Azure Web PubSub client WebSocket subprotocols (json.webpubsub.azure.v1 and json.reliable.webpubsub.azure.v1) and the…
+- [Azure Web PubSub Hubs REST API](https://apis.io/apis/microsoft-azure-web-pubsub/azure-web-pubsub-hubs-rest-api/) — REST API for managing hub configurations within a Web PubSub instance. Hubs provide logical isolation for messaging and allow per-hub configuration of event…
+- [Azure Web PubSub for Socket.IO REST API](https://apis.io/apis/microsoft-azure-web-pubsub/azure-web-pubsub-for-socketio-rest-api/) — REST API for managing Azure Web PubSub for Socket.IO instances. Provides a fully managed Socket.IO server replacement that allows existing Socket.IO…
+- [Azure Web PubSub Private Endpoint Connections REST API](https://apis.io/apis/microsoft-azure-web-pubsub/azure-web-pubsub-private-endpoint-connections-rest-api/) — REST API for managing private endpoint connections to a Web PubSub service instance. Enables secure, private connectivity from virtual networks to Web…
+- [Azure Web PubSub Shared Private Link Resources REST API](https://apis.io/apis/microsoft-azure-web-pubsub/azure-web-pubsub-shared-private-link-resources-rest-api/) — REST API for managing shared private link resources for a Web PubSub service. Enables outbound private connectivity from Web PubSub to other Azure resources…
+- [Azure Web PubSub Hub API](https://apis.io/apis/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-hub-api/) — Send messages and manage connections, groups, and users in a hub
+- [Azure Web PubSub Permission API](https://apis.io/apis/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-permission-api/) — Permission management for client connections
+- [Azure Web PubSub Client Token API](https://apis.io/apis/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-client-token-api/) — Generate JWT tokens for client connections
 
-## APIs
+### Published properties
 
-### Azure Web PubSub Service REST API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Data plane REST API for sending messages to connections, groups, and users on a Web PubSub service instance. Supports broadcast operations, targeted message delivery, and managing client lifecycle including disconnect operations and existence checks.
+#### Arazzo workflows (12)
 
-- **Human URL:** [https://learn.microsoft.com/en-us/rest/api/webpubsub/dataplane](https://learn.microsoft.com/en-us/rest/api/webpubsub/dataplane)
-- **Base URL:** `https://{instance}.webpubsub.azure.com`
+Multi-step workflows that chain operations into a business task.
 
-#### Tags
+- [Azure Web PubSub Check then Close Connection](https://apis.io/arazzos/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-check-then-close-connection-workflow/)
+- [Azure Web PubSub Direct Connection Message](https://apis.io/arazzos/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-direct-connection-message-workflow/)
+- [Azure Web PubSub Grant Permission then Send to User](https://apis.io/arazzos/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-grant-permission-and-send-to-user-workflow/)
+- [Azure Web PubSub Grant Permission if Missing](https://apis.io/arazzos/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-grant-permission-if-missing-workflow/)
+- [Azure Web PubSub Broadcast to Group if Active](https://apis.io/arazzos/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-group-broadcast-if-active-workflow/)
+- [Azure Web PubSub Warn Group and Tear Down](https://apis.io/arazzos/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-group-warn-and-teardown-workflow/)
+- [Azure Web PubSub Join Group, Send, then Leave](https://apis.io/arazzos/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-join-group-and-send-workflow/)
+- [Azure Web PubSub Notify User if Online](https://apis.io/arazzos/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-notify-user-if-online-workflow/)
+- [Azure Web PubSub Provision Client and Join Group](https://apis.io/arazzos/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-provision-client-and-join-group-workflow/)
+- [Azure Web PubSub Revoke Permission and Evict Connection](https://apis.io/arazzos/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-revoke-permission-and-evict-workflow/)
+- [Azure Web PubSub Generate Token then Broadcast](https://apis.io/arazzos/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-token-then-broadcast-workflow/)
+- [Azure Web PubSub Onboard User to Group](https://apis.io/arazzos/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-user-onboard-to-group-workflow/)
 
-- Data Plane
-- Messaging
-- Web PubSub
+#### AsyncAPI (1)
 
-#### Properties
+Event-driven and webhook contracts.
 
-- [Documentation](https://learn.microsoft.com/en-us/rest/api/webpubsub/dataplane)
-- [OpenAPI](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/webpubsub/data-plane/WebPubSub/stable/2024-01-01/webpubsub.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Reference](https://learn.microsoft.com/en-us/rest/api/webpubsub/dataplane/web-pub-sub)
-- [Authentication](https://learn.microsoft.com/en-us/azure/azure-web-pubsub/howto-generate-client-tokens)
-- [Postman Collection](collections/microsoft-azure-web-pubsub.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-azure-web-pubsub.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Azure Web PubSub](https://apis.io/asyncapis/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-asyncapi/)
 
-### Azure Web PubSub Client and Upstream Events
+#### Event channels (2)
 
-AsyncAPI 2.6 description of the Azure Web PubSub client WebSocket subprotocols (json.webpubsub.azure.v1 and json.reliable.webpubsub.azure.v1) and the CloudEvents 1.0 HTTP upstream contract used by the service to deliver client events (connect, connected, disconnected, message, user custom events) to a configured backend webhook.
+Individual events and webhooks the provider emits.
 
-- **Human URL:** [https://learn.microsoft.com/en-us/azure/azure-web-pubsub/reference-json-webpubsub-subprotocol](https://learn.microsoft.com/en-us/azure/azure-web-pubsub/reference-json-webpubsub-subprotocol)
-- **Base URL:** `wss://{instance}.webpubsub.azure.com`
+- [/client/hubs/{hub}](https://apis.io/channels/microsoft-azure-web-pubsub/client-hubs-hub/)
+- [/upstream](https://apis.io/channels/microsoft-azure-web-pubsub/upstream/)
 
-#### Tags
+#### Agentic access (1)
 
-- AsyncAPI
-- CloudEvents
-- Event-Driven
-- Pub-Sub
-- WebSockets
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Properties
+- [Microsoft Azure Web Pubsub Agentic Access](https://apis.io/agentic-access/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-agentic-access/)
 
-- [AsyncAPI](https://raw.githubusercontent.com/api-evangelist/microsoft-azure-web-pubsub/main/asyncapi/microsoft-azure-web-pubsub-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [Documentation](https://learn.microsoft.com/en-us/azure/azure-web-pubsub/reference-json-webpubsub-subprotocol)
-- [Reference](https://learn.microsoft.com/en-us/azure/azure-web-pubsub/reference-json-reliable-webpubsub-subprotocol)
-- [Reference](https://learn.microsoft.com/en-us/azure/azure-web-pubsub/reference-cloud-events)
-- [Authentication](https://learn.microsoft.com/en-us/azure/azure-web-pubsub/howto-generate-client-tokens)
-- [Postman Collection](collections/microsoft-azure-web-pubsub.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-azure-web-pubsub.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Collections (7)
 
-### Azure Web PubSub Management REST API
+Postman and Open Collection request collections.
 
-Control plane REST API for provisioning and managing Azure Web PubSub service instances. Supports creating, scaling, configuring, regenerating access keys, and deleting Web PubSub resources through Azure Resource Manager.
+- [Azure Web PubSub Service Data Plane REST API](https://apis.io/collections/microsoft-azure-web-pubsub/open-microsoft-azure-web-pubsub/)
+- [Azure Web PubSub Service Data Plane REST ClientToken API](https://apis.io/collections/microsoft-azure-web-pubsub/open-microsoft-azure-web-pubsub-clienttoken-api/)
+- [Azure Web PubSub Service Data Plane REST ClientToken Hub API](https://apis.io/collections/microsoft-azure-web-pubsub/open-microsoft-azure-web-pubsub-hub-api/)
+- [Azure Web PubSub Service Data Plane REST ClientToken Permission API](https://apis.io/collections/microsoft-azure-web-pubsub/open-microsoft-azure-web-pubsub-permission-api/)
+- [Azure Web PubSub Service Data Plane REST ClientToken API](https://apis.io/collections/microsoft-azure-web-pubsub/postman-microsoft-azure-web-pubsub-clienttoken-api/)
+- [Azure Web PubSub Service Data Plane REST ClientToken Hub API](https://apis.io/collections/microsoft-azure-web-pubsub/postman-microsoft-azure-web-pubsub-hub-api/)
+- [Azure Web PubSub Service Data Plane REST ClientToken Permission API](https://apis.io/collections/microsoft-azure-web-pubsub/postman-microsoft-azure-web-pubsub-permission-api/)
 
-- **Human URL:** [https://learn.microsoft.com/en-us/rest/api/webpubsub](https://learn.microsoft.com/en-us/rest/api/webpubsub)
-- **Base URL:** `https://management.azure.com`
+#### Governance rules (1)
 
-#### Tags
+Spectral rulesets for the provider's contracts.
 
-- Control Plane
-- Resource Manager
-- Web PubSub
+- [Azure Web PubSub — asyncapi rules](https://apis.io/rules/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-asyncapi-spectral-rules/)
 
-#### Properties
+#### Security (2)
 
-- [Documentation](https://learn.microsoft.com/en-us/rest/api/webpubsub)
-- [OpenAPI](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/webpubsub/resource-manager/Microsoft.SignalRService/stable/2024-03-01/webpubsub.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Reference](https://learn.microsoft.com/en-us/rest/api/webpubsub/web-pub-sub)
-- [Authentication](https://learn.microsoft.com/en-us/azure/active-directory/develop/authentication-scenarios)
-- [Postman Collection](collections/microsoft-azure-web-pubsub.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-azure-web-pubsub.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-### Azure Web PubSub Hubs REST API
+- [Microsoft Azure Web Pubsub Authentication](https://apis.io/security/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-authentication/)
+- [Microsoft Azure Web Pubsub Domain Security](https://apis.io/security/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-domain-security/)
 
-REST API for managing hub configurations within a Web PubSub instance. Hubs provide logical isolation for messaging and allow per-hub configuration of event handlers, anonymous connect policies, and authorization settings.
+#### Plans and pricing (1)
 
-- **Human URL:** [https://learn.microsoft.com/en-us/rest/api/webpubsub/web-pub-sub-hubs](https://learn.microsoft.com/en-us/rest/api/webpubsub/web-pub-sub-hubs)
-- **Base URL:** `https://management.azure.com`
+Published plans, tiers and prices.
 
-#### Tags
+- [Microsoft Azure Web Pubsub Plans Pricing](https://apis.io/plans/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-plans-pricing/)
 
-- Hubs
-- Resource Manager
-- Web PubSub
+#### Rate limits (1)
 
-#### Properties
+Published request limits.
 
-- [Documentation](https://learn.microsoft.com/en-us/rest/api/webpubsub/web-pub-sub-hubs)
-- [Reference](https://learn.microsoft.com/en-us/rest/api/webpubsub/web-pub-sub-hubs?view=rest-webpubsub-2024-03-01)
-- [Postman Collection](collections/microsoft-azure-web-pubsub.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-azure-web-pubsub.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Microsoft Azure Web Pubsub Rate Limits](https://apis.io/rate-limits/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-rate-limits/)
 
-### Azure Web PubSub for Socket.IO REST API
+#### FinOps (1)
 
-REST API for managing Azure Web PubSub for Socket.IO instances. Provides a fully managed Socket.IO server replacement that allows existing Socket.IO applications to scale to millions of connections without rewriting application code.
+What the API costs to run, by operation.
 
-- **Human URL:** [https://learn.microsoft.com/en-us/azure/azure-web-pubsub/socketio-overview](https://learn.microsoft.com/en-us/azure/azure-web-pubsub/socketio-overview)
-- **Base URL:** `https://management.azure.com`
+- [Microsoft Azure Web Pubsub Finops](https://apis.io/finops/microsoft-azure-web-pubsub/microsoft-azure-web-pubsub-finops/)
 
-#### Tags
+## Where to find this API
 
-- Resource Manager
-- Socket.IO
-- Web PubSub
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/azure/azure-web-pubsub/socketio-overview)
-- [Reference](https://learn.microsoft.com/en-us/rest/api/webpubsub/web-pub-sub?view=rest-webpubsub-2024-03-01)
-- [Getting Started](https://learn.microsoft.com/en-us/azure/azure-web-pubsub/socketio-quickstart)
-- [Postman Collection](collections/microsoft-azure-web-pubsub.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-azure-web-pubsub.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Azure Web PubSub Private Endpoint Connections REST API
-
-REST API for managing private endpoint connections to a Web PubSub service instance. Enables secure, private connectivity from virtual networks to Web PubSub through Azure Private Link without exposing traffic to the public internet.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/rest/api/webpubsub/web-pub-sub-private-endpoint-connections](https://learn.microsoft.com/en-us/rest/api/webpubsub/web-pub-sub-private-endpoint-connections)
-- **Base URL:** `https://management.azure.com`
-
-#### Tags
-
-- Networking
-- Private Endpoints
-- Resource Manager
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/rest/api/webpubsub/web-pub-sub-private-endpoint-connections)
-- [Reference](https://learn.microsoft.com/en-us/rest/api/webpubsub/web-pub-sub-private-endpoint-connections?view=rest-webpubsub-2024-03-01)
-- [Postman Collection](collections/microsoft-azure-web-pubsub.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-azure-web-pubsub.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Azure Web PubSub Shared Private Link Resources REST API
-
-REST API for managing shared private link resources for a Web PubSub service. Enables outbound private connectivity from Web PubSub to other Azure resources such as Key Vault and Storage when configuring upstream event handlers.
-
-- **Human URL:** [https://learn.microsoft.com/en-us/rest/api/webpubsub/web-pub-sub-shared-private-link-resources](https://learn.microsoft.com/en-us/rest/api/webpubsub/web-pub-sub-shared-private-link-resources)
-- **Base URL:** `https://management.azure.com`
-
-#### Tags
-
-- Networking
-- Private Link
-- Resource Manager
-
-#### Properties
-
-- [Documentation](https://learn.microsoft.com/en-us/rest/api/webpubsub/web-pub-sub-shared-private-link-resources)
-- [Reference](https://learn.microsoft.com/en-us/rest/api/webpubsub/web-pub-sub-shared-private-link-resources?view=rest-webpubsub-2024-03-01)
-- [Postman Collection](collections/microsoft-azure-web-pubsub.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/microsoft-azure-web-pubsub.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
-- [Portal](https://portal.azure.com/)
 - [Website](https://azure.microsoft.com/en-us/products/web-pubsub)
 - [Documentation](https://learn.microsoft.com/en-us/azure/azure-web-pubsub/)
-- [Getting Started](https://learn.microsoft.com/en-us/azure/azure-web-pubsub/quickstart-serverless)
-- [Authentication](https://learn.microsoft.com/en-us/azure/azure-web-pubsub/howto-generate-client-tokens)
+- [Getting started](https://learn.microsoft.com/en-us/azure/azure-web-pubsub/quickstart-serverless)
 - [Pricing](https://azure.microsoft.com/en-us/pricing/details/web-pubsub/)
-- [S L A](https://azure.microsoft.com/en-us/support/legal/sla/web-pubsub/)
-- [Status Page](https://status.azure.com/)
-- [Blog](https://devblogs.microsoft.com/azure-sdk/)
 - [Support](https://azure.microsoft.com/en-us/support/options/)
-- [Terms of Service](https://azure.microsoft.com/en-us/support/legal/)
-- [Privacy Policy](https://privacy.microsoft.com/en-us/privacystatement)
-- [Sign Up](https://azure.microsoft.com/en-us/free)
-- [Login](https://portal.azure.com)
-- [S D Ks](https://learn.microsoft.com/en-us/azure/azure-web-pubsub/reference-server-sdk-js)
-- [S D K -  Java Script](https://www.npmjs.com/package/@azure/web-pubsub)
-- [S D K -  Python](https://pypi.org/project/azure-messaging-webpubsubservice/)
-- [S D K - . N E T](https://www.nuget.org/packages/Azure.Messaging.WebPubSub)
-- [S D K -  Java](https://learn.microsoft.com/en-us/java/api/overview/azure/messaging-webpubsub-readme)
-- [S D K -  Go](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/messaging/azwebpubsub)
-- [C L I  Tools](https://learn.microsoft.com/en-us/cli/azure/webpubsub)
 - [Changelog](https://azure.microsoft.com/en-us/updates/?product=web-pubsub)
-- [GitHub Organization](https://github.com/Azure)
-- [Git Hub  Samples](https://github.com/Azure/azure-webpubsub)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-webpubsub)
-- [Community](https://learn.microsoft.com/en-us/answers/tags/371/azure-web-pubsub)
-- [F A Q](https://learn.microsoft.com/en-us/azure/azure-web-pubsub/resource-faq)
-- [Quotas](https://learn.microsoft.com/en-us/azure/azure-web-pubsub/concept-billing-model)
+- [Blog](https://devblogs.microsoft.com/azure-sdk/)
+- [Terms of service](https://azure.microsoft.com/en-us/support/legal/)
+- [Privacy policy](https://privacy.microsoft.com/en-us/privacystatement)
+- [GitHub](https://github.com/Azure)
+- [Status](https://status.azure.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 49.1** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 53.9 |
+| Contract governance | 13.6 |
+| Operational transparency | 42.1 |
+| Developer ergonomics | 53.6 |
+| Access clarity | 52.6 |
+
+**Agent readiness 22.5** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 19.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/microsoft-azure-web-pubsub/](https://apis.io/providers/microsoft-azure-web-pubsub/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Azure Web PubSub: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/microsoft-azure-web-pubsub/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
